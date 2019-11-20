@@ -4,6 +4,7 @@
 {% for note in notes %}
     <li>
         <h2>{{ note.title }}</h2>
+        <p>Slug: {{ note.slug }}</p>
             {% load static %}
         <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Hurricane picture">
     </li>

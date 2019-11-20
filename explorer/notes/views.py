@@ -20,7 +20,22 @@ class NoteList(ListView):
 
 class NoteDetail(DetailView):
     '''Display the information currently on one Note.'''
-    pass
+    model = Note
+    template_name = 'notes/one_note.html'
+
+    def get(self, request, slug):
+        """Renders a page to show a specific note in full detail.
+           Parameters:
+           slug(slug): specific slug of the Note instance.
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page of the Note
+
+        """
+        note = self.get_queryset().get(slug__iexact=slug)
+        context = {'note': note}
+        return render(request, self.template_name, context)
 
 
 class NoteCreate(CreateView):

@@ -40,7 +40,8 @@ class NoteDetail(DetailView):
 
 class NoteCreate(CreateView):
     '''Render a form to create new note.'''
-    pass
+    model = Note
+    fields = []
 
 
 class NoteUpdate(UpdateView):

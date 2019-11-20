@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -27,3 +29,17 @@ class Note(models.Model):
     modified = models.DateTimeField(auto_now_add=True,
                                     help_text="The date and time this note " +
                                               "was editied. Auto-calculated.")
+
+    def __str__(self):
+        '''Return the title of the note for ease of development.'''
+        return self.title
+
+    def get_absolute_rul(self):
+        '''Returns a fully qualified path for a page (i.e. /my-note).'''
+        path_components = {'slug': self.slug}
+        return reverse('notes:notes-detail-page', kwargs=path_components)
+
+    def save(self, *args, **kwargs):
+        '''Creates a URL safe slug automatically when a new note instantiates.'''
+        if not self.pk:
+            self.slug = slugify(self.title, allow_unicode=True)

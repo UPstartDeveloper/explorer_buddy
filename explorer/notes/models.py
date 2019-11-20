@@ -43,3 +43,6 @@ class Note(models.Model):
         '''Creates a URL safe slug automatically when a new note instantiates.'''
         if not self.pk:
             self.slug = slugify(self.title, allow_unicode=True)
+
+            # call save on the superclass
+            return super(Page, self).save(*args, **kwargs)

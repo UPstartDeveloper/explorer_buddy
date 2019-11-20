@@ -22,7 +22,7 @@ class Note(models.Model):
     content = models.TextField(
         help_text="Log your observations, questions, and hypotheses here."
     )
-    media = models.ImageField(upload_to='media', help_text="Optional image to add to note.")
+    media = models.ImageField(help_text="Optional image to add to note.")
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                              "was created. Auto-generated.")
@@ -40,9 +40,9 @@ class Note(models.Model):
         return reverse('notes:notes-detail-page', kwargs=path_components)
 
     def save(self, *args, **kwargs):
-        '''Creates a URL safe slug automatically when a new note instantiates.'''
+        '''Creates a URL safe slug automatically when a new note is saved.'''
         if not self.pk:
             self.slug = slugify(self.title, allow_unicode=True)
 
             # call save on the superclass
-            return super(Page, self).save(*args, **kwargs)
+            return super(Note, self).save(*args, **kwargs)

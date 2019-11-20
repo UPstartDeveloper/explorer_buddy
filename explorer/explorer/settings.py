@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'notes',
-    'accounts',
     'notes.apps.NotesConfig',
     'accounts.apps.AccountsConfig',
 ]

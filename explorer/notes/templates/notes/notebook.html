@@ -1,11 +1,11 @@
 <h1>Welcome to the Notes Index!</h1>
 
+<ol>
 {% for note in notes %}
-
-    <h2>{{ note.title }}</h2>
-    <h4>{{ note.author }}</h4>
-    <h5>{{ note.content }}</h5>
-    {% load static %}
-    <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Hurricane picture">
-
+    <li>
+        <h2>{{ note.title }}</h2>
+            {% load static %}
+        <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Hurricane picture">
+    </li>
 {% endfor %}
+</ol>

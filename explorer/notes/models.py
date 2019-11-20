@@ -20,7 +20,7 @@ class Note(models.Model):
     content = models.TextField(
         help_text="Log your observations, questions, and hypotheses here."
     )
-    media = models.ImageField(help_text="Optional image to add to note.")
+    media = models.ImageField(upload_to='media', help_text="Optional image to add to note.")
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                              "was created. Auto-generated.")

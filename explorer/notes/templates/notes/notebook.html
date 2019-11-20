@@ -5,6 +5,7 @@
     <h2>{{ note.title }}</h2>
     <h4>{{ note.author }}</h4>
     <h5>{{ note.content }}</h5>
-    {{ note.media }}
+    {% load static %}
+    <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Hurricane picture">
 
 {% endfor %}

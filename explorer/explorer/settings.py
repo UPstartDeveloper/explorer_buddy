@@ -125,3 +125,8 @@ STATIC_URL = '/static/'
 
 # note settings
 NOTE_TITLE_MAX_LENGTH = 600
+
+# used to render images from ImageField in Note model
+# credit goes to: https://tinyurl.com/qljkp43
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

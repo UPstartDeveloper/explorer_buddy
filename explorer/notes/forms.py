@@ -1,4 +1,4 @@
-from . import models
+from notes.models import Note
 from django import forms
 
 

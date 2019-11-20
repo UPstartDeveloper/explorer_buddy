@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import ModelFormMixin, CreateView, UpdateView, DeleteView
 from notes.models import Note
+from django.contrib.auth.models import User
 
 
 class NoteList(ListView):
@@ -41,7 +42,28 @@ class NoteDetail(DetailView):
 class NoteCreate(CreateView):
     '''Render a form to create new note.'''
     model = Note
-    fields = []
+    fields = ['title', 'content', 'media']
+    template_name = 'notes/note_create_form.html'
+
+    def form_valid(self, form, request):
+        """Creates the new Note, and makes the user who submitted
+           the form the author.
+        """
+        self.object = form.save(commit=False)
+        user = User.objects.get(username=request.user)
+        self.object.author = user
+        self.object = form.save()
+        return super(ModelFormMixin, self).form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        """Override the CreateView post method, so that it invokes
+           the subclass form_valid, which includes a parameter for request.
+        """
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form, request)
+        else:
+            return self.form_invalid(form)
 
 
 class NoteUpdate(UpdateView):

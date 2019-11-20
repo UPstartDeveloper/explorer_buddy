@@ -1,12 +1,19 @@
 <h1>Welcome to the Notes Index!</h1>
 
+<a href="{% url 'notes:create_note_form' %}">Create a Note</a>
+
 <ol>
 {% for note in notes %}
     <li>
         <h2>{{ note.title }}</h2>
-        <a href="{% url 'notes:notes-detail-page' note.slug %}">See More!</a>
             {% load static %}
-        <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Hurricane picture">
+            {% if note.media %}
+                <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Image here">
+            {% else %}
+                <img src="#" alt="No images yet!">
+            {% endif %}
+        <br>
+        <a href="{% url 'notes:notes-detail-page' note.slug %}">See More!</a>
     </li>
 {% endfor %}
 </ol>

@@ -35,7 +35,7 @@ class Note(models.Model):
         '''Return the title of the note for ease of development.'''
         return self.title
 
-    def get_absolute_rul(self):
+    def get_absolute_url(self):
         '''Returns a fully qualified path for a page (i.e. /my-note).'''
         path_components = {'slug': self.slug}
         return reverse('notes:notes-detail-page', kwargs=path_components)

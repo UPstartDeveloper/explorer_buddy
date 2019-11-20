@@ -1,1 +1,10 @@
-jhgjslkg'nf'ln
+<h1>Welcome to the Notes Index!</h1>
+
+{% for note in notes %}
+
+    <h2>{{ note.title }}</h2>
+    <h4>{{ note.author }}</h4>
+    <h5>{{ note.content }}</h5>
+    {{ note.media }}
+
+{% endfor %}

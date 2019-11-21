@@ -7,3 +7,6 @@ class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ['title', 'content', 'media']
+
+    def __init__(self, *args, **kwargs):
+        super(NoteForm, self).__init__(*args, **kwargs)

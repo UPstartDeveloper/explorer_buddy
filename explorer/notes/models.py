@@ -15,7 +15,7 @@ class Note(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                help_text="The explorer making this log.")
     slug = models.CharField(max_length=settings.NOTE_TITLE_MAX_LENGTH,
-                            blank=True, editable=False,
+                            blank=True, editable=True,
                             help_text="Unique URL path to access this note." +
                                       "Computer Generated.")
 

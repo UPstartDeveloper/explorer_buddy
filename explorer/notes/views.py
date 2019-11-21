@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (ModelFormMixin, CreateView, UpdateView,
                                        DeleteView)
+from django.http import HttpResponseRedirect
 from notes.models import Note
 from django.contrib.auth.models import User
 from notes.forms import NoteForm
@@ -69,9 +71,71 @@ class NoteCreate(CreateView):
 
 class NoteUpdate(UpdateView):
     '''Render a form to edit a note.'''
+    model = Note
     form_class = NoteForm
-    template_name_suffix = '_edit_form'
-    queryset = Note.objects.all()
+    template_name = 'notes/note_edit_form.html'
+
+    # def form_valid(self, request, slug):
+    #     note = Note.objects.get(slug=slug)
+    #     note.title = request.POST.get('title', '')
+    #     note.slug = request.POST.get('slug', '')
+    #     note.content = request.POST.get('content', '')
+    #     note.media = request.POST.get('media', '')
+    #     note.modified = request.POST.get('modified', '')
+    #     note.save()
+    #     success_url = self.get_success_url()
+    #     print(f'HEY! Object after submission: {obj}, success: {success_url}')
+    #     return render(request, 'notes:notes-detail-page', {'slug': note.slug})
+    # return HttpResponseRedirect(reverse('notes:notes-detail-page', kwargs={'slug': note.slug}))
+
+    def post(self, request, slug):
+        """Override the CreateView post method, so that it invokes
+           the subclass form_valid, which includes a parameter for request.
+        """
+        note = Note.objects.get(slug=slug)
+        # print(n)
+
+        if request.method == "POST":
+            form = NoteForm(request.POST)
+            if form.is_valid() is True:
+
+                # note.title = request.POST.get('title', '')
+                # note.slug = request.POST.get('slug', '')
+                # note.content = request.POST.get('content', '')
+                # note.media = request.POST.get('media', '')
+                # note.modified = request.POST.get('modified', '')
+
+
+                note = form.save(commit=False)
+                note.author = request.user
+                note.modified = request.POST.get('modified', '')
+                note.save()
+
+
+                return HttpResponseRedirect(reverse('notes:notes-detail-page', kwargs={'slug': note.slug}))
+
+        else:
+            form = NoteForm(instance=note)
+
+        return render(request, self.template_name, {'slug': note})
+
+
+    def get_success_url(self):
+        return reverse_lazy('notes:notes-detail-page', args=[self.object.slug])
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        print(f'HEY! Object before form submission: {self.object}')
+        return super().get(self, request, *args, **kwargs)
+'''
+    def form_valid(self, form):
+        clean_data = form.cleaned_data
+        obj = self.object
+        self.object = form.save()
+        success_url = self.get_success_url()
+        print(f'HEY! Object after submission: {obj}, success: {success_url}')
+        return super().form_valid(form)
+'''
 
 
 class NoteDelete(DeleteView):

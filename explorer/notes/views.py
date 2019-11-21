@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import ModelFormMixin, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import (ModelFormMixin, CreateView, UpdateView,
+                                       DeleteView)
 from notes.models import Note
 from django.contrib.auth.models import User
+from notes.forms import NoteForm
 
 
 class NoteList(ListView):
@@ -41,8 +43,7 @@ class NoteDetail(DetailView):
 
 class NoteCreate(CreateView):
     '''Render a form to create new note.'''
-    model = Note
-    fields = ['title', 'content', 'media']
+    form_class = NoteForm
     template_name = 'notes/note_create_form.html'
 
     def form_valid(self, form, request):
@@ -68,7 +69,9 @@ class NoteCreate(CreateView):
 
 class NoteUpdate(UpdateView):
     '''Render a form to edit a note.'''
-    pass
+    form_class = NoteForm
+    template_name_suffix = '_edit_form'
+    queryset = Note.objects.all()
 
 
 class NoteDelete(DeleteView):

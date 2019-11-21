@@ -119,7 +119,6 @@ class NoteUpdate(UpdateView):
 
         return render(request, self.template_name, {'slug': note})
 
-
     def get_success_url(self):
         return reverse_lazy('notes:notes-detail-page', args=[self.object.slug])
 

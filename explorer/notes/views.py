@@ -126,7 +126,7 @@ class NoteUpdate(UpdateView):
         self.object = self.get_object()
         print(f'HEY! Object before form submission: {self.object}')
         return super().get(self, request, *args, **kwargs)
-'''
+    '''
     def form_valid(self, form):
         clean_data = form.cleaned_data
         obj = self.object
@@ -134,7 +134,7 @@ class NoteUpdate(UpdateView):
         success_url = self.get_success_url()
         print(f'HEY! Object after submission: {obj}, success: {success_url}')
         return super().form_valid(form)
-'''
+    '''
 
 
 class NoteDelete(DeleteView):

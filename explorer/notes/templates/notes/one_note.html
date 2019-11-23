@@ -2,4 +2,6 @@
 
 <a href="{% url 'notes:edit_note_form' note.slug %}">Update Note</a>
 <br>
+<a href="{% url 'notes:delete_note' note.slug %}">Delete Note</a>
+<br>
 <a href="{% url 'notes:notes-list-page' %}">Back to All Notes</a>

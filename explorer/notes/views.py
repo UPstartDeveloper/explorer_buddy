@@ -44,7 +44,7 @@ class NoteDetail(DetailView):
         return render(request, self.template_name, context)
 
 
-class NoteCreate(LoginRequiredMixin, CreateView):
+class NoteCreate(CreateView):
     '''Render a form to create new note.'''
     model = Note
     form_class = NoteForm
@@ -52,6 +52,7 @@ class NoteCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         '''Initializes author of new Note by tracking the logged in user.'''
+        assert self.request.user.is_authenticated is True
         form.instance.author = self.request.user
         return super().form_valid(form)
 

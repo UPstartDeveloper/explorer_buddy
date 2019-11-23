@@ -7,4 +7,6 @@
         <p>Are you sure you would like to delete "{{ object }}"?</p>
         <input type="submit" value="YES!">
     </form>
+    <br>
+    <a href="{% url 'notes:notes-list-page' %}">Back to Notes List</a>
 {% endblock %}

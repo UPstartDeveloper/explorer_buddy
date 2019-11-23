@@ -68,25 +68,44 @@ class NoteCreate(CreateView):
         else:
             return self.form_invalid(form)
 
+'''
+def update(request, slug):
+    instance = get_object_or_404(Note, slug=slug)
+    form = NoteForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        note = Note.objects.get(slug=instance.slug)
+        return redirect(reverse('notes/note_edit_form.html', note.slug))
+    return render(request, 'notes/note_edit_form.html', {'form': form})
+'''
+
 
 class NoteUpdate(UpdateView):
     '''Render a form to edit a note.'''
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_edit_form.html'
+    '''
+    def get_object(self):
+        slug = self.kwargs.get("slug")
+        return get_object_or_404(Note, slug=slug)
+        '''
 
-    # def form_valid(self, request, slug):
-    #     note = Note.objects.get(slug=slug)
-    #     note.title = request.POST.get('title', '')
-    #     note.slug = request.POST.get('slug', '')
-    #     note.content = request.POST.get('content', '')
-    #     note.media = request.POST.get('media', '')
-    #     note.modified = request.POST.get('modified', '')
-    #     note.save()
-    #     success_url = self.get_success_url()
-    #     print(f'HEY! Object after submission: {obj}, success: {success_url}')
-    #     return render(request, 'notes:notes-detail-page', {'slug': note.slug})
-    # return HttpResponseRedirect(reverse('notes:notes-detail-page', kwargs={'slug': note.slug}))
+
+'''
+    def form_valid(self, request, slug):
+         note = Note.objects.get(slug=slug)
+         note.title = request.POST.get('title', '')
+         note.slug = request.POST.get('slug', '')
+         note.content = request.POST.get('content', '')
+         note.media = request.POST.get('media', '')
+         note.modified = request.POST.get('modified', '')
+         note.save()
+         success_url = self.get_success_url()
+         print(f'HEY! Object after submission: {obj}, success: {success_url}')
+         return render(request, 'notes:notes-detail-page', {'slug': note.slug})
+         return HttpResponseRedirect(reverse('notes:notes-detail-page',
+                                     kwargs={'slug': note.slug}))
 
     def post(self, request, slug):
         """Override the CreateView post method, so that it invokes
@@ -99,11 +118,11 @@ class NoteUpdate(UpdateView):
             form = NoteForm(request.POST)
             if form.is_valid() is True:
 
-                # note.title = request.POST.get('title', '')
-                # note.slug = request.POST.get('slug', '')
-                # note.content = request.POST.get('content', '')
-                # note.media = request.POST.get('media', '')
-                # note.modified = request.POST.get('modified', '')
+                note.title = request.POST.get('title', '')
+                note.slug = request.POST.get('slug', '')
+                note.content = request.POST.get('content', '')
+                note.media = request.POST.get('media', '')
+                note.modified = request.POST.get('modified', '')
 
 
                 note = form.save(commit=False)
@@ -112,7 +131,8 @@ class NoteUpdate(UpdateView):
                 note.save()
 
 
-                return HttpResponseRedirect(reverse('notes:notes-detail-page', kwargs={'slug': note.slug}))
+                return HttpResponseRedirect(reverse('notes:notes-detail-page',
+                                            kwargs={'slug': note.slug}))
 
         else:
             form = NoteForm(instance=note)
@@ -127,6 +147,7 @@ class NoteUpdate(UpdateView):
         print(f'HEY! Object before form submission: {self.object}')
         return super().get(self, request, *args, **kwargs)
     '''
+'''
     def form_valid(self, form):
         clean_data = form.cleaned_data
         obj = self.object

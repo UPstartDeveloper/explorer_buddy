@@ -8,5 +8,5 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = ['title', 'content', 'media']
 
-    def __init__(self, *args, **kwargs):
-        super(NoteForm, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+        # super(NoteForm, self).__init__(*args, **kwargs)

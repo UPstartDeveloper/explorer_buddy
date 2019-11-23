@@ -26,7 +26,7 @@ class Note(models.Model):
                               blank=True)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
-                                             "was created. Auto-generated.")
+                                   "was created. Auto-generated.")
     modified = models.DateTimeField(auto_now_add=True,
                                     help_text="The date and time this note " +
                                               "was editied. Auto-calculated.")

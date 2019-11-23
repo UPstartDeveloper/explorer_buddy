@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (ModelFormMixin, CreateView, UpdateView,
                                        DeleteView)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from notes.models import Note
 from django.contrib.auth.models import User
@@ -43,30 +44,17 @@ class NoteDetail(DetailView):
         return render(request, self.template_name, context)
 
 
-class NoteCreate(CreateView):
+class NoteCreate(LoginRequiredMixin, CreateView):
     '''Render a form to create new note.'''
+    model = Note
     form_class = NoteForm
     template_name = 'notes/note_create_form.html'
 
-    def form_valid(self, form, request):
-        """Creates the new Note, and makes the user who submitted
-           the form the author.
-        """
-        self.object = form.save(commit=False)
-        user = User.objects.get(username=request.user)
-        self.object.author = user
-        self.object = form.save()
-        return super(ModelFormMixin, self).form_valid(form)
+    def form_valid(self, form):
+        '''Initializes author of new Note by tracking the logged in user.'''
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        """Override the CreateView post method, so that it invokes
-           the subclass form_valid, which includes a parameter for request.
-        """
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form, request)
-        else:
-            return self.form_invalid(form)
 
 '''
 def update(request, slug):
@@ -89,7 +77,7 @@ class NoteUpdate(UpdateView):
     def get_object(self):
         slug = self.kwargs.get("slug")
         return get_object_or_404(Note, slug=slug)
-        '''
+    '''
 
 
 '''
@@ -160,4 +148,6 @@ class NoteUpdate(UpdateView):
 
 class NoteDelete(DeleteView):
     '''Render a form for user to delete a Note.'''
-    pass
+    model = Note
+    template_name_suffix = '_confirm_delete'
+    success_url = reverse_lazy('notes:notes-list-page')

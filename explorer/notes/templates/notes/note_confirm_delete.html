@@ -4,9 +4,9 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        <p>Are you sure you would like to delete "{{ object }}"?</p>
-        <input type="submit" value="YES!">
+        <h3>Are you sure you would like to delete "{{ object }}"?</h3>
+        <button class="btn btn-danger" type="submit">Confirm</button>
     </form>
     <br>
-    <a href="{% url 'notes:notes-list-page' %}">Back to Notes List</a>
+    <a href="{% url 'notes:notes-list-page' %}"><button class="btn btn-secondary">Back to Notes List</button></a>
 {% endblock %}

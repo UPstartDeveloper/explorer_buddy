@@ -9,7 +9,7 @@
             <li>
                 <h2>{{ note.title }}</h2>
                 {% load static %}
-                {% if note.media %}
+                {% if note.media is not None %}
                     <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash.jpg' %}" alt="Image here">
                 {% else %}
                     <img src="#" alt="No images yet!">

@@ -30,7 +30,7 @@
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                 <!-- pages to log out or create a new note -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-success">New Note</button></a>
+                    <a href="{% url 'notes:create_note_form' %}" class="nav-link text-white bg-dark"><button class="btn btn-success">New Note</button></a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-danger">Log Out</button></a>

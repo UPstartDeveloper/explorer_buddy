@@ -11,7 +11,7 @@
 }
 
 .sidenav a {
-    padding: 6px 8px 16px;
+    padding: 6px 8px 6px 16px;
     text-decoration: none;
     display: block;
     font-size: 25px;
@@ -19,4 +19,9 @@
 
 .sidenav a:hover {
     color: yellow;
+}
+
+.container {
+    margin-left: 160px;
+    padding: 0px 10px;
 }

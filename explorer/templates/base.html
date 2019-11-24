@@ -18,9 +18,21 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
-<body
+<body>
 
     <!-- NAVBAR -->
+    <!-- Credit to the 'Tech with Tim' YouTube channel for inspiring this code: https://www.youtube.com/watch?v=914JH3t64Kg-->
+    <div class="sidenav">
+        <ul>
+            {% for note in notes %}
+                <li>
+                    <a href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
+    </div>
+    <!--
     <nav class="navbar navbar-dark navbar-expand-md bg-dark justify-content-center">
         <a href="#" class="navbar-brand d-flex w-50 mr-auto text-white">
             <img src="{% static 'images/brandmark.png' %}" width="30" height="30" alt="">Explorer Buddy
@@ -30,7 +42,7 @@
         </button>
         <div class="navbar-collapse collapse w-100">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                <!-- pages to log out or create a new note -->
+                pages to log out or create a new note
                 <li class="nav-item">
                     <a href="{% url 'notes:create_note_form' %}" class="nav-link text-white bg-dark"><button class="btn btn-success">New Note</button></a>
                 </li>
@@ -40,6 +52,7 @@
             </ul>
         </div>
     </nav>
+-->
 
     <div class="container">
         {% block content %}

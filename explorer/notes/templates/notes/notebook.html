@@ -3,16 +3,7 @@
 {% block content %}
 
     <!-- SIDEBAR -->
-    <div class="sidenav">
-        <ul class="">
-            {% for note in notes %}
-                <li>
-                    <a href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
-                </li>
-                <br>
-            {% endfor %}
-        </ul>
-    </div>
+    
 
 
     <!-- PREVIEW FOR  EACH NOTE -->

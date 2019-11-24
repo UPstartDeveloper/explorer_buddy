@@ -40,7 +40,11 @@ class NoteDetail(DetailView):
 
         """
         note = self.get_queryset().get(slug__iexact=slug)
-        context = {'note': note}
+        notes = self.get_queryset().all()
+        context = {
+            'note': note,
+            'notes': notes
+        }
         return render(request, self.template_name, context)
 
 
@@ -49,6 +53,23 @@ class NoteCreate(CreateView):
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_create_form.html'
+    queryset = Note.objects.all()
+
+    def get(self, request):
+        """Renders a form to create a new Note.
+           Parameters:
+           slug(slug): specific slug of the Note instance.
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page of the Note
+
+        """
+        notes = self.queryset
+        context = {
+            'notes': notes
+        }
+        return render(request, self.template_name, context)
 
     def form_valid(self, form):
         '''Initializes author of new Note by tracking the logged in user.'''
@@ -74,6 +95,25 @@ class NoteUpdate(UpdateView):
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_edit_form.html'
+    queryset = Note.objects.all()
+
+    def get(self, request, slug):
+        """Renders a page to edit a note created previously.
+           Parameters:
+           slug(slug): specific slug of the Note instance.
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page of the Note
+
+        """
+        note = self.queryset.get(slug__iexact=slug)
+        notes = self.queryset
+        context = {
+            'note': note,
+            'notes': notes
+        }
+        return render(request, self.template_name, context)
     '''
     def get_object(self):
         slug = self.kwargs.get("slug")
@@ -152,3 +192,22 @@ class NoteDelete(DeleteView):
     model = Note
     template_name_suffix = '_confirm_delete'
     success_url = reverse_lazy('notes:notes-list-page')
+    queryset = Note.objects.all()
+
+    def get(self, request, slug):
+        """Renders a form to delete a Note.
+           Parameters:
+           slug(slug): specific slug of the Note instance.
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page of the Note
+
+        """
+        notes = self.queryset
+        note = self.queryset.get(slug__iexact=slug)
+        context = {
+            'notes': notes,
+            'note': note
+        }
+        return render(request, self.template_name, context)

@@ -52,7 +52,7 @@ class NoteCreate(CreateView):
 
     def form_valid(self, form):
         '''Initializes author of new Note by tracking the logged in user.'''
-        assert self.request.user.is_authenticated is True
+        # assert self.request.user.is_authenticated is True
         form.instance.author = self.request.user
         return super().form_valid(form)
 

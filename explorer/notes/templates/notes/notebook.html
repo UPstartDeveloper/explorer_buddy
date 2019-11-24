@@ -1,10 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome to the Notes Index!</h1>
 
-    <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
-    <ol>
+    <!-- SIDEBAR -->
+    <div class="sidenav">
+        <ul class="">
+            {% for note in notes %}
+                <li>
+                    <a href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <!-- PREVIEW FOR  EACH NOTE -->
+    <!--<div class="container">
+
+    </div>-->
+    <!--<h1>Welcome to the Notes Index!</h1>
+
+    <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>-->
+    <!-- <ol>
         {% for note in notes %}
             <li>
                 <h2>{{ note.title }}</h2>
@@ -18,5 +36,28 @@
                 <a href="{% url 'notes:notes-detail-page' note.slug %}">See More!</a>
             </li>
         {% endfor %}
-    </ol>
+    </ol>-->
+    <!--<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+      <!--<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    </div>
+    {% for note in notes %}
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#{{ note.slug }}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ note.title }}</a>
+    </div>
+    {% endfor %}
+    {% for note in notes %}
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade active" id="{{ note.slug }}" role="tabpanel" aria-labelledby="v-pills-home-tab">{{ note.title }}</div>
+    </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+    {% endfor %}-->
+
+
+
 {% endblock %}

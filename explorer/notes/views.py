@@ -55,21 +55,24 @@ class NoteCreate(CreateView):
     template_name = 'notes/note_create_form.html'
     queryset = Note.objects.all()
 
-    def get(self, request):
-        """Renders a form to create a new Note.
-           Parameters:
-           slug(slug): specific slug of the Note instance.
-           request(HttpRequest): the HTTP request sent to the server
-
-           Returns:
-           render: a page of the Note
-
+    # credit to Classy CBV for providing source code to override
+    def render_to_response(self, context, **response_kwargs):
         """
+        Return a response, using the `response_class` for NoteCreate, with a
+        template rendered with the given context.
+        Pass response_kwargs to the constructor of the response class.
+        """
+        response_kwargs.setdefault('content_type', self.content_type)
         notes = self.queryset
-        context = {
-            'notes': notes
-        }
-        return super().get(request)
+        notes_context = {'notes': notes}
+        context.update(notes_context)
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            using=self.template_engine,
+            **response_kwargs
+        )
 
     def form_valid(self, form):
         '''Initializes author of new Note by tracking the logged in user.'''
@@ -97,6 +100,26 @@ class NoteUpdate(UpdateView):
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
 
+    # credit to Classy CBV for providing source code to override
+    def render_to_response(self, context, **response_kwargs):
+        """
+        Return a response, using the `response_class` for NoteCreate, with a
+        template rendered with the given context.
+        Pass response_kwargs to the constructor of the response class.
+        """
+        response_kwargs.setdefault('content_type', self.content_type)
+        notes = self.queryset
+        notes_context = {'notes': notes}
+        context.update(notes_context)
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            using=self.template_engine,
+            **response_kwargs
+        )
+
+    '''
     def get(self, request, slug):
         """Renders a page to edit a note created previously.
            Parameters:
@@ -118,6 +141,7 @@ class NoteUpdate(UpdateView):
     def get_object(self):
         slug = self.kwargs.get("slug")
         return get_object_or_404(Note, slug=slug)
+    '''
     '''
 
 

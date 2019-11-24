@@ -1,6 +1,6 @@
 .sidenav {
     height: 100%;
-    width: 160px;
+    width: 190px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -11,7 +11,7 @@
 }
 
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 6px 8px 6px 0px;
     text-decoration: none;
     display: block;
     font-size: 25px;
@@ -22,6 +22,10 @@
 }
 
 .container {
-    margin-left: 160px;
+    margin-left: 190px;
     padding: 0px 10px;
+}
+
+ul, ol, li {
+    list-style-type: none;
 }

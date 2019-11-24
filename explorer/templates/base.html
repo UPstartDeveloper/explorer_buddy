@@ -28,7 +28,6 @@
         </button>
         <div class="navbar-collapse collapse w-100">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                {% if user.is_authenticated %}
                 <!-- pages to log out or create a new note -->
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-success">New Note</button></a>
@@ -36,15 +35,6 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-danger">Log Out</button></a>
                 </li>
-                {% else %}
-                <!-- pages to login or sign up -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-success">Sign Up</button></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-primary">Login</button></a>
-                </li>
-                {% endif %}
             </ul>
         </div>
     </nav>

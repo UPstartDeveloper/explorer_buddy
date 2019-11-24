@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Welcome to the Notes Index!</h1>
 
-    <a href="{% url 'notes:create_note_form' %}">Create a Note</a>
+    <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
     <ol>
         {% for note in notes %}
             <li>

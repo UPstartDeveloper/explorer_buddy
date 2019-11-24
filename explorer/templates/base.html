@@ -16,6 +16,27 @@
 </head>
 <body>
 
+    <!-- NAVBAR -->
+    {% load static %}
+    <nav class="navbar navbar-light navbar-expand-md bg-dark justify-content-center">
+        <a href="#" class="navbar-brand d-flex w-50 mr-auto text-white">
+            <img src="{% static 'images/brandmark.png' %}" width="30" height="30" alt="">Explorer Buddy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white bg-dark"><u>Office of the Provost</u></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white bg-dark"><u>HARVARD.EDU</u></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         {% block content %}
         {% endblock %}

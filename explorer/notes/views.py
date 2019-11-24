@@ -69,7 +69,7 @@ class NoteCreate(CreateView):
         context = {
             'notes': notes
         }
-        return render(request, self.template_name, context)
+        return super().get(request)
 
     def form_valid(self, form):
         '''Initializes author of new Note by tracking the logged in user.'''
@@ -113,7 +113,7 @@ class NoteUpdate(UpdateView):
             'note': note,
             'notes': notes
         }
-        return render(request, self.template_name, context)
+        return super().get(request)
     '''
     def get_object(self):
         slug = self.kwargs.get("slug")

@@ -30,18 +30,18 @@
                 {% if user.is_authenticated %}
                 <!-- pages to log out or create a new note -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>New Note</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-success">New Note</button></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>Log Out</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-danger">Log Out</button></a>
                 </li>
                 {% else %}
                 <!-- pages to login or sign up -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>Sign Up</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-success">Sign Up</button></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>Login</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><button class="btn btn-primary">Login</button></a>
                 </li>
                 {% endif %}
             </ul>

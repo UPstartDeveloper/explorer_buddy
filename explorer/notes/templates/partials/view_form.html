@@ -2,7 +2,15 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <br>
     <button class="btn btn-success" type="submit">Add Note</button>
 </form>
 <br>
+<!-- Form to see the DetailView -->
+<!--<div class="row">-->
+<!-- Current Issue: Cancel Update Form button, should take user back to details view of the note
+<form class="form-group" action="{% url 'notes:notes-detail-page' note.slug}">
+    <button class="form-control btn btn-info" type="submit">Back to Note</button>
+</form>-->
 <a href="{% url 'notes:notes-list-page' %}"><button class="btn btn-secondary">Back to Notes List</button></a>
+<!--</div>-->

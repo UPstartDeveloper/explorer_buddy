@@ -27,12 +27,23 @@
         </button>
         <div class="navbar-collapse collapse w-100">
             <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                {% if user.is_authenticated %}
+                <!-- pages to log out or create a new note -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>Office of the Provost</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><u>New Note</u></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white bg-dark"><u>HARVARD.EDU</u></a>
+                    <a href="#" class="nav-link text-white bg-dark"><u>Log Out</u></a>
                 </li>
+                {% else %}
+                <!-- pages to login or sign up -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white bg-dark"><u>Sign Up</u></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white bg-dark"><u>Login</u></a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

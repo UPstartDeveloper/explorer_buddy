@@ -5,7 +5,6 @@
     z-index: 1;
     top: 0;
     Left: 0;
-    background-color: #111;;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -29,6 +28,7 @@
 .container {
     margin-left: 190px;
     padding: 0px 10px;
+    position: relative;
 }
 
 ul, ol, li {

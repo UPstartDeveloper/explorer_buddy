@@ -22,13 +22,18 @@
 
     <!-- NAVBAR -->
     <!-- Credit to the 'Tech with Tim' YouTube channel for inspiring this code: https://www.youtube.com/watch?v=914JH3t64Kg-->
-    <div class="sidenav">
+    <div class="sidenav bg-dark">
         <ul>
+            <!-- Brandmark and link to create button -->
             <li>
                 <a href="#" class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <span class="brandmark">Explorer<br>Buddy</span>
                 </a>
+            </li>
+            <br>
+            <li>
+                <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
             </li>
             <br>
             {% for note in notes %}
@@ -41,8 +46,10 @@
     </div>
 
     <div class="container">
+
         {% block content %}
         {% endblock %}
+
     </div>
 
 </body>

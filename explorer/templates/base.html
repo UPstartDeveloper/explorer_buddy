@@ -24,9 +24,16 @@
     <!-- Credit to the 'Tech with Tim' YouTube channel for inspiring this code: https://www.youtube.com/watch?v=914JH3t64Kg-->
     <div class="sidenav">
         <ul>
+            <li>
+                <a href="#" class="navbar-brand d-flex w-50 mr-auto text-white">
+                    <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
+                    <span class="brandmark">Explorer<br>Buddy</span>
+                </a>
+            </li>
+            <br>
             {% for note in notes %}
                 <li>
-                    <a href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
+                    <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
                 </li>
                 <br>
             {% endfor %}

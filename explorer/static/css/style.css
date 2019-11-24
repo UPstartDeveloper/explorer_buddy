@@ -10,15 +10,20 @@
     padding-top: 20px;
 }
 
-.sidenav a {
+.sidenav .note-links {
     padding: 6px 8px 6px 0px;
     text-decoration: none;
     display: block;
     font-size: 25px;
 }
 
-.sidenav a:hover {
+.sidenav .notelinks:hover {
     color: yellow;
+}
+
+.sidenav .brandmark {
+    font-size: 20px;
+    padding: 0px 0px 5px 10px;
 }
 
 .container {

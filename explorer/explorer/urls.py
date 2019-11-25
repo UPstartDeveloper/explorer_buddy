@@ -20,8 +20,10 @@ from django.contrib.staticfiles.urls import static
 # from explorer import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('notes.urls')),
+    path('admin/', admin.site.urls),  # Admin site
+    path('', include('notes.urls')),  # Notes app
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
 
 # urlpatterns += staticfiles_urlpatterns()

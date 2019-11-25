@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ note.title }}</h1>
 
-    <h3>Your Observations:</h3>
-
-    <p>{{ note.content }}</p>
-
-    {% if note.media is not None %}
-        <h4>Your Media:</h4>
-            <img src="{{ note.media }}" alt="Picture goes here.">
-            <br><br>
-    {% endif %}
-
+    <div class="card">
+        <div class="card-header text-center">
+            <h1>{{ note.title }}</h1>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Your Observations:</h3>
+            <p class="card-text">{{ note.content }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Last updated: {{ note.modified }}
+        </div>
+    </div>
+    <!-- Links for card footer -->
     <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
     <!-- Modal for Delete -->
-    <!--<a href="{% url 'notes:delete_note' note.slug %}"><--><!--<a href="{% url 'notes:delete_note' note.slug %}">--><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button></a>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button></a>
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

@@ -35,6 +35,6 @@ ul, ol, li {
     list-style-type: none;
 }
 
-.card {
-    
+.img-circle {
+      border-radius: 15px;
 }

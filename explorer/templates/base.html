@@ -32,16 +32,26 @@
                 </a>
             </li>
             <br>
-            <li>
-                <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
-            </li>
-            <br>
-            {% for note in notes %}
+            <!-- is user is signed in, they can CRUD their notes, and log out -->
+            {% if user.is_authenticated %}
                 <li>
-                    <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
+                    <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
                 </li>
-                <br>
-            {% endfor %}        
+                {% for note in notes %}
+                    <li>
+                        <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
+                    </li>
+                    <br>
+                {% endfor %}
+                    <li>
+                        <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
+                    </li>
+            <!-- Otherwise, the user can only login or signup -->
+            {% else %}
+                <li>
+                    <a href="{% url 'login' %}" class="btn btn-secondary ml-2">Log In</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 

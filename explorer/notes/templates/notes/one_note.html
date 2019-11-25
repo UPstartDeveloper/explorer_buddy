@@ -19,10 +19,12 @@
         </div>
         <div class="card-footer text-muted">
             <div class="row justify-content-center">
-                <p class="d-flex w-50 mr-auto">Last updated: {{ note.modified }}</p>
-                <!-- Links for card footer -->
-                <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button>
+                <div class="d-flex w-50 mr-auto">
+                    <!-- Links for card footer -->
+                    <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button>
+                </div>
+                <p>Last updated: {{ note.modified }}</p>
             </div>
         </div>
     </div>

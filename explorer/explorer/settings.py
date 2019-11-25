@@ -94,6 +94,9 @@ DATABASES = {
 # redirect to create form when successfully authenticated users
 LOGIN_REDIRECT_URL = 'notes:create_note_form'
 
+# redirect back to login page on logout
+LOGOUT_REDIRECT_URL = 'login'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

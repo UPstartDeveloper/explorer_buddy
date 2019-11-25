@@ -28,7 +28,12 @@
             <li>
                 <a href="#" class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
-                    <span class="brandmark">Explorer<br>Buddy</span>
+                    <!-- user sees their name if signed in -->
+                    {% if not user.is_authenticated %}
+                        <span class="brandmark">Explorer<br>Buddy</span>
+                    {% else %}
+                        <span class="brandmark">Hello,<br>{{ user.username }}!</span>
+                    {% endif %}
                 </a>
             </li>
             <br>
@@ -37,6 +42,7 @@
                 <li>
                     <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
                 </li>
+                <br>
                 {% for note in notes %}
                     <li>
                         <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>

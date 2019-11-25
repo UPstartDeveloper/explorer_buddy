@@ -3,14 +3,24 @@
 {% block content %}
     <h1>{{ note.title }}</h1>
 
+    <h3>Your Observations:</h3>
+
+    <p>{{ note.content }}</p>
+
+    {% if note.media is not None %}
+        <h4>Your Media:</h4>
+            <img src="{{ note.media }}" alt="Picture goes here.">
+            <br><br>
+    {% endif %}
+
     <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
     <!-- Modal for Delete -->
     <!--<a href="{% url 'notes:delete_note' note.slug %}"><--><!--<a href="{% url 'notes:delete_note' note.slug %}">--><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button></a>
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="DeleteModalLabel">Watch Out!</h5>
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title text-dark" id="DeleteModalLabel">Watch Out!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="close">
                         <span aria-hidden="true">&times;</span>
                     </button>

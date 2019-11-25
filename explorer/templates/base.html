@@ -55,7 +55,11 @@
             <!-- Otherwise, the user can only login or signup -->
             {% else %}
                 <li>
-                    <a href="{% url 'login' %}" class="btn btn-secondary bg-success ml-2">Log In</a>
+                    <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
+                </li>
+                <br>
+                <li>
+                    <a href="{% url 'login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
                 </li>
             {% endif %}
             <br>

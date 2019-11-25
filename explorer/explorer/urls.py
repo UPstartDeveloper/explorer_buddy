@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import static
+from django.contrib.auth import views as auth_views
 # from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # from explorer import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site
-    path('', include('notes.urls')),  # Notes app
+    path('notes/', include('notes.urls')),  # Notes app
     path('accounts/', include('django.contrib.auth.urls')),
+    path('',
+        auth_views.LoginView.as_view(template_name="registration/login.html"),
+        name='login')
 
 ]
 

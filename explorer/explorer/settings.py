@@ -91,6 +91,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
+# redirect to create form when successfully authenticated users
+LOGIN_REDIRECT_URL = 'notes:create_note_form'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

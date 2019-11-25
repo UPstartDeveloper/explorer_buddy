@@ -215,7 +215,7 @@ class NoteDelete(DeleteView):
     '''Render a form for user to delete a Note.'''
     model = Note
     template_name_suffix = '_confirm_delete'
-    success_url = reverse_lazy('notes:notes-list-page')
+    success_url = reverse_lazy('notes:create_note_form')
     queryset = Note.objects.all()
 
     def get(self, request, slug):

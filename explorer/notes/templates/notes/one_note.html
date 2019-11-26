@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
 <span class="d-block">
     <div class="card">
-        <div class="card-img-top">
-            {% if note.media is not None %}
-                    <img src="{{ note.media.image.url }}" alt="Picture goes here.">
-                    <br><br>
-            {% endif %}
-        </div>
+        <!-- <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash_G6OvGtz'}" alt="" class="card-img-top">-->
+        <!-- <div class="card-img-top">
+            <img src="" alt="">
+        <!-- Commented to focus on UI/UX   {# {% if note.media is null %}
+
+            {% else %}
+                <img src="{{ note.media.image.url }}" alt="Picture goes here.">
+                <br><br>
+            {% endif %}#}
+        </div> -->
         <div class="card-header text-center">
             <h1>{{ note.title }}</h1>
         </div>

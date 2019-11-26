@@ -142,5 +142,5 @@ NOTE_TITLE_MAX_LENGTH = 600
 
 # used to render images from ImageField in Note model
 # credit goes to: Justin Mitchel at https://youtu.be/YH-ipgxlJzs
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

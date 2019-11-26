@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<span class="d-block">
     <div class="card">
         <div class="card-img-top">
             {% if note.media is not None %}
@@ -24,10 +24,12 @@
                     <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete Note</button>
                 </div>
+                <br>
                 <p>Last updated: {{ note.modified }}</p>
             </div>
         </div>
     </div>
+    </span>
     <!-- Modal for Delete -->
     <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

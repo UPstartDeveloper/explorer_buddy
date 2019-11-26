@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from notes.models import Note
 from django.contrib.auth.models import User
 from notes.forms import NoteForm
+import explorer
 
 
 class NoteList(ListView):
@@ -39,6 +40,8 @@ class NoteDetail(DetailView):
            render: a page of the Note
 
         """
+        print(f'Media url: {explorer.settings.MEDIA_URL}')
+        print(f'Media root: {explorer.settings.MEDIA_ROOT}')
         note = self.get_queryset().get(slug__iexact=slug)
         notes = self.get_queryset().all()
         context = {

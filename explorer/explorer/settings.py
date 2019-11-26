@@ -141,6 +141,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 NOTE_TITLE_MAX_LENGTH = 600
 
 # used to render images from ImageField in Note model
-# credit goes to: https://tinyurl.com/qljkp43
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# credit goes to: Justin Mitchel at https://youtu.be/YH-ipgxlJzs
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

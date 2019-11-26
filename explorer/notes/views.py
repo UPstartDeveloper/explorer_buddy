@@ -40,6 +40,7 @@ class NoteDetail(DetailView):
            render: a page of the Note
 
         """
+        print(f'Static root: {explorer.settings.STATIC_ROOT}')
         print(f'Media url: {explorer.settings.MEDIA_URL}')
         print(f'Media root: {explorer.settings.MEDIA_ROOT}')
         note = self.get_queryset().get(slug__iexact=slug)

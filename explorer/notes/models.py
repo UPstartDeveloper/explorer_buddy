@@ -23,8 +23,8 @@ class Note(models.Model):
         help_text="Log your observations, questions, and hypotheses here."
     )
     media = models.FileField(upload_to='image/',
-                              help_text="Optional image to add to note.",
-                              blank=True)
+                             help_text="Optional image to add to note.",
+                             blank=True)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")

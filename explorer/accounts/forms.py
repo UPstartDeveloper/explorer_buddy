@@ -8,10 +8,9 @@ from django.core.exceptions import ValidationError
 
 
 class ExplorerSignUpForm(forms.ModelForm):
-    '''A sign up form with fields for email, username, and password.'''
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['email', 'username', 'password']
 
 
 """
@@ -33,4 +32,7 @@ class ExplorerSignUpForm(forms.Form):
             raise ValidationError("Username already exists")
         else:
             return username
+
+    def clean_email(self):
+        '''Make sure that there is not already another User with is email.'''
 """

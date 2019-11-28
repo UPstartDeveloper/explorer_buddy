@@ -154,10 +154,16 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
 # Settings for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL_USERNAME')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_HOST_USER = str(os.getenv('EMAIL_USERNAME'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASS_1') + " " +
+                          os.getenv('EMAIL_PASS_2') + " " +
+                          os.getenv('EMAIL_PASS_3') + " " +
+                          os.getenv('EMAIL_PASS_4'))
+
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')

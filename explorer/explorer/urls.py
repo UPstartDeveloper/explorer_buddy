@@ -25,10 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site
     path('notes/', include('notes.urls')),  # Notes app
     path('auth/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('',
-         auth_views.LoginView.as_view(template_name="registration/login.html"),
-         name='login'),
+    path('', include('accounts.urls')),
     # views for resetting the password
     path('password-reset/',
          auth_views.PasswordResetView.as_view(

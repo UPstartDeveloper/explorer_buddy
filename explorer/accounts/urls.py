@@ -8,4 +8,7 @@ from django.urls import reverse_lazy
 app_name = 'accounts'
 urlpatterns = [
     path('signup/', signup, name='signup-form'),
+    path('',
+         auth_views.LoginView.as_view(template_name="registration/login.html"),
+         name='login'),
 ]

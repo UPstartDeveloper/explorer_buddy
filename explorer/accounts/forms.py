@@ -7,10 +7,27 @@ from django.core.exceptions import ValidationError
 # https://overiq.com/django-1-10/django-creating-users-using-usercreationform/
 
 
-class ExplorerSignUpForm(forms.ModelForm):
+class ExplorerSignUpForm(UserCreationForm):
+    '''A form that handles registering new users.'''
+    email = forms.EmailField(required=True,
+                             help_text="Must include the '@' symbol.")
+
     class Meta:
         model = User
-        fields = ['email', 'username', 'password']
+        fields = ['email', 'username',
+                  'first_name', 'last_name',
+                  'password1', 'password2']
+
+    def save(self, commit=True):
+        '''Performs validations, then saves the data submitted by user.'''
+        user = super(ExplorerSignUpForm, self).save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.email = self.cleaned_data['email']
+
+        if commit is True:
+            user.save()
+        return user
 
 
 """

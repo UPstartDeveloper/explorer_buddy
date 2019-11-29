@@ -31,4 +31,4 @@ class PasswordResetView(auth_views.PasswordResetView):
 class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
     '''Presents the form for entering a new password.'''
     success_url = reverse_lazy('accounts:password_reset_complete')
-    template_name = 'accounts/password_reset_confirm.html'
+    template_name = 'accounts/password_reset/new_password.html'

@@ -3,6 +3,7 @@ from accounts.views import signup, PasswordResetView
 from django.contrib.auth.models import User, AnonymousUser
 from django.test.client import RequestFactory
 from django.core import mail
+from django.urls import reverse, reverse_lazy
 
 
 class SignUpViewTests(TestCase):
@@ -47,24 +48,26 @@ class PasswordResetViewTests(TestCase):
         self.unknown_user = AnonymousUser()
         self.user = User.objects.create(username='Zain',
                                         email='zain_14@icloud.com',
-                                        password='bismillah')
+                                        password='who_is_typing_this_7')
+        self.password_reset_url = reverse('accounts:password_reset')
 
     def test_user_submits_valid_email_to_reset_password(self):
         '''A user who enters an email address
            (already on record in the database) receives a reset email.
         '''
-        get_request = self.factory.get('accounts:password_reset')
+        get_request = self.factory.get(self.password_reset_url)
         response = PasswordResetView.as_view()(get_request)
         # user is able to see the form
         self.assertEqual(response.status_code, 200)
 
-        # user is redirected successfully if they enter a valid email
-        print(f'Email passed: {self.user.email}')
+        # user receives an email if the address they submit is in database
         form_data = {
             'email': self.user.email
         }
-        post_request = self.factory.post('accounts:password_reset', form_data)
-        post_request.user = self.unknown_user
-        response = PasswordResetView.as_view()(post_request)
-        print(f'{response}')
+        user_with_email = User.objects.get(email=self.user.email)
+        self.assertTrue(user_with_email, not None)
+        response = self.client.post(self.password_reset_url, form_data)
+        # user is redirected after submission
         self.assertEqual(response.status_code, 302)
+        # an email is sent to the user
+        self.assertEqual(len(mail.outbox), 1)

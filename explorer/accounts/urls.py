@@ -13,9 +13,7 @@ urlpatterns = [
          auth_views.LoginView.as_view(template_name="accounts/login.html"),
          name='login'),
     # views for resetting the password
-    path('password-reset/',
-         PasswordResetView.as_view(
-          template_name='accounts/password_reset/enter_email.html'),
+    path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),
 
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(

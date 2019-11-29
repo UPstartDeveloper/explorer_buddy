@@ -26,6 +26,7 @@ def signup(request):
 class PasswordResetView(auth_views.PasswordResetView):
     '''Emails user with a link to reset their password.'''
     success_url = reverse_lazy('accounts:password_reset_done')
+    template_name = 'accounts/password_reset/enter_email.html'
 
 
 class PasswordResetConfirm(auth_views.PasswordResetConfirmView):

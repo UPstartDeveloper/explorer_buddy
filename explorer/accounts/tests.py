@@ -54,14 +54,17 @@ class PasswordResetViewTests(TestCase):
            (already on record in the database) receives a reset email.
         '''
         get_request = self.factory.get('accounts:password_reset')
-        response = PasswordResetView.as_view(get_request)
+        response = PasswordResetView.as_view()(get_request)
         # user is able to see the form
         self.assertEqual(response.status_code, 200)
 
         # user is redirected successfully if they enter a valid email
+        print(f'Email passed: {self.user.email}')
         form_data = {
-            'email': self.user['email']
+            'email': self.user.email
         }
         post_request = self.factory.post('accounts:password_reset', form_data)
-        response = response = PasswordResetView.as_view(post_request)
+        post_request.user = self.unknown_user
+        response = PasswordResetView.as_view()(post_request)
+        print(f'{response}')
         self.assertEqual(response.status_code, 302)

@@ -38,6 +38,15 @@ git add .
 git commit -m "[YOUR COMMIT MESSAGE HERE]"
 git push origin branch-name
 ```
+- Don't forget to add yourself to the [CONTRIBUTORS.md](CONTRIBUTORS.md) file!
+Please credit your own work, by adding your name to the list in this format:
+```
+Name: [YOUR_NAME](Link to your GitHub Account, social media, or other personal link)
+About Me: 2-3 sentences to introduce yourself
+Feature: What did you contribute?
+Technologies: What did you use to build your contribution?
+Fun Fact: optional trivia about yourself!
+```
 - Create new Pull Request from your forked repository - Click the "New Pull Request" button located at the top of your repo
 - Wait for your PR review and merge approval!
 - If you care about this work, then I humbly ask you to **please star this repository and spread the word with more developers! Thank you!**

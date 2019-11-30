@@ -16,6 +16,7 @@ benefit from Explorer Buddy.
 - **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration
 
 ## License
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for more details.
 
 ## Acknowledgements
 - Mom and Dad - Thank you both for helping me discover a love of science from an early age.

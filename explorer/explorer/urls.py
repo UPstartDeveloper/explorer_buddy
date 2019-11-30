@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site
     path('notes/', include('notes.urls')),  # Notes app
+    path('api/', include('api.urls')),
     path('auth/', include('django.contrib.auth.urls')),
     path('', include('accounts.urls')),
 ]

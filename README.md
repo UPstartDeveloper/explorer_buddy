@@ -1,4 +1,11 @@
 # Explorer Buddy
+They say we have more information available us today than ever before - but does that make us more knowledgeable?
+Learning is about asking questions, not just looking up answers others have found for you.
+Explorer Buddy is a note taking app for the most curious among us - children, who want a companion
+to help take ownership over the questions they want answered about the world around us.
+Explorer Buddy will allow users to discover knowledge through jotting down their own observations,
+asking their own burning questions, and testing their own hypotheses - all while beating traditional paper notebooks with its modern web UI/UX.
+Will you help develop Explorer Buddy to be the *cutting-edge* learning resource of the future?
 
 ## Proposal
 Please look at [proposal.md](proposal.md) for why young scientists everywhere will

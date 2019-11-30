@@ -12,6 +12,12 @@ benefit from Explorer Buddy.
 
 ## Running the tests
 
+## Built With
+- Django - web framework for the backend
+- Bootstrap 4 - styling the front end
+- SQLite 3 - schema for the database
+- Django REST Framework - framework building the API (found in the [explorer_buddy.explorer.api package](/explorer_buddy/explorer/api/)).
+
 ## Authors
 - **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration
 
@@ -24,3 +30,4 @@ None of what I accomplish at Make School would be possible without your support.
 - [Django Project](https://www.djangoproject.com/) - This project's backend is built off the Django web framework for Python.
 Thanks so much for all the open source contributions you guys are making!
 - Dani Roxberry and Meredith Murphy (Make School BEW Instructors) - thank you both for helping me learn how to use the Django Web Framework!
+- Billie Thompson - inspired this README.md file with her amazing [README.md template on GitHub Gist!](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)

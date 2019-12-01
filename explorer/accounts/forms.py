@@ -9,9 +9,6 @@ from django.core.exceptions import ValidationError
 
 class ExplorerSignUpForm(UserCreationForm):
     '''A form that handles registering new users.'''
-    # email = forms.EmailField(required=True,
-                             # help_text="Must include the '@' symbol.")
-
     class Meta:
         model = User
         fields = ['email', 'username',

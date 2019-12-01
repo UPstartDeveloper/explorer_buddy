@@ -34,6 +34,7 @@ def signup(request):
         return render(request, 'accounts/signup.html', context)
 """
 
+
 class PasswordResetView(auth_views.PasswordResetView):
     '''Emails user with a link to reset their password.'''
     success_url = reverse_lazy('accounts:password_reset_done')

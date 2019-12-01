@@ -147,7 +147,7 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(LOCAL_CDN_PATH, 'static')
 
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'static/'),  # represents the local version
+  # os.path.join(BASE_DIR, 'static/'),  # represents the local version
  ]
 
 # used to render images from ImageField in Note model

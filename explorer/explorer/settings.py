@@ -139,8 +139,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # mock live cdn i.e. AWS S3
 # LOCAL_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
@@ -162,9 +162,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = str(os.getenv('EMAIL_USERNAME'))
-EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASS_1') + " " +
-                          os.getenv('EMAIL_PASS_2') + " " +
-                          os.getenv('EMAIL_PASS_3') + " " +
-                          os.getenv('EMAIL_PASS_4'))
+EMAIL_HOST_PASSWORD = (
+                       str(os.getenv('EMAIL_PASS_1')) + " " +
+                       str(os.getenv('EMAIL_PASS_2')) + " " +
+                       str(os.getenv('EMAIL_PASS_3')) + " " +
+                       str(os.getenv('EMAIL_PASS_4'))
+                      )
 
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')

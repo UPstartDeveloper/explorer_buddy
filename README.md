@@ -52,8 +52,30 @@ Fun Fact: optional trivia about yourself!
 - If you care about this work, then I humbly ask you to **please star this repository and spread the word with more developers! Thank you!**
 
 #### Installing Requirements
+To ensure you have a development experience that's **as smooth as possible**, please follow these instructions:
+
+- Once you have activated your Python virtual environment, please be sure to run the following command from the command line, to ensure you have all the dependencies
+you may need to use for this project:
+```
+python3 -m pip install -r requirements.txt
+```
+- You may always double check the dependencies you have using this command:
+```
+python3 -m pip list
+```
+- If you install any new dependencies, please be sure to record them using
+```
+python3 -m pip freeze > requirements.txt
+```
+Thank you in advance for contributing to this project!
 
 ## Running the Tests
+Within the `explorer_buddy/explorer` directory, you can run the tests for this project from the command line, using:
+```
+python3 manage.py test
+```
+If you would like to add tests of your own and don't know how, please be sure to read the [Django 2.2 documentation on testing](https://docs.djangoproject.com/en/2.2/topics/testing/overview/#).
+If you are writing tests for the `api` package, you may also like to consult the [Django REST Framework documentation](https://www.django-rest-framework.org/api-guide/testing/).
 
 ## Built With
 - Django - web framework for the backend

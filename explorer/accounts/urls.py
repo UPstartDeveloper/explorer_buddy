@@ -1,17 +1,19 @@
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import signup
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
-from accounts.views import PasswordResetConfirm, PasswordResetView
+from accounts.views import PasswordResetConfirm, PasswordResetView, SignUpView
 
 
 app_name = 'accounts'
 urlpatterns = [
-    path('signup/', signup, name='signup-form'),
+    # paths to signup, login, and logout
+    path('signup/', SignUpView.as_view(), name='signup-form'),
     path('',
          auth_views.LoginView.as_view(template_name="accounts/login.html"),
          name='login'),
+    path('logout/',
+         auth_views.LogoutView.as_view(), name='logout'),
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),

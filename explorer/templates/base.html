@@ -52,7 +52,7 @@
                         <br>
                     {% endfor %}
                     <li>
-                        <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Log Out</a>
+                        <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
                     </li>
                     <!-- Otherwise, the user can only login or signup -->
                 {% else %}

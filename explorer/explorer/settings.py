@@ -100,7 +100,7 @@ DATABASES = {
 LOGIN_REDIRECT_URL = 'notes:create_note_form'
 
 # redirect back to login page on logout
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

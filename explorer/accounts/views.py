@@ -11,6 +11,14 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 
+class SignUpView(CreateView):
+    '''Display form where user can create a new account.'''
+    form_class = ExplorerSignUpForm
+    success_url = reverse_lazy('accounts:login')
+    template_name = 'accounts/signup.html'
+
+
+"""
 def signup(request):
     '''Display form where user can create a new account.'''
     if request.method == 'POST':
@@ -24,7 +32,7 @@ def signup(request):
         form = ExplorerSignUpForm()
         context = {'form': form}
         return render(request, 'accounts/signup.html', context)
-
+"""
 
 class PasswordResetView(auth_views.PasswordResetView):
     '''Emails user with a link to reset their password.'''

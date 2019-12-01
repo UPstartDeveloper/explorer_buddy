@@ -8,7 +8,8 @@ from accounts.views import PasswordResetConfirm, PasswordResetView, SignUpView
 app_name = 'accounts'
 urlpatterns = [
     # paths to signup, login, and logout
-    path('signup/', SignUpView.as_view(), name='signup-form'),
+    path('signup/', SignUpView.as_view(template_name='accounts/signup.html'),
+         name='signup-form'),
     path('',
          auth_views.LoginView.as_view(template_name="accounts/login.html"),
          name='login'),

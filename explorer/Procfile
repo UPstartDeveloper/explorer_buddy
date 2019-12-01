@@ -1,1 +1,1 @@
-web: gunicorn explorer:explorer
+web: gunicorn explorer.wsgi

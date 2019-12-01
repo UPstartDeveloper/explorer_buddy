@@ -27,6 +27,8 @@ class SignUpViewTests(TestCase):
         form_data = {
             'email': 'zain_14@icloud.com',
             'username': 'LittleEinstein',
+            'first_name': 'Zain',
+            'last_name': 'Raza',
             'password1': 'Sc1ence_R0cks!',
             'password2': 'Sc1ence_R0cks!'
         }

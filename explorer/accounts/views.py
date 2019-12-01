@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 import django.contrib.auth.views as auth_views
 from django.urls import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def signup(request):
         form = ExplorerSignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return HttpResponseRedirect('accounts/login.html')
     else:
         form = ExplorerSignUpForm()
         context = {'form': form}

@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'explorer-buddy.herokuapp.com',
+    'localhost',
 ]
 
 

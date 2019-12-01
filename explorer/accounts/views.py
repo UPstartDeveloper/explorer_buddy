@@ -16,8 +16,10 @@ def signup(request):
     if request.method == 'POST':
         form = ExplorerSignUpForm(request.POST)
         if form.is_valid():
+            print('the form is valid')
             form.save()
-            return HttpResponseRedirect('accounts/login.html')
+            return redirect(reverse('accounts:login'))
+        print('the form is invalid')
     else:
         form = ExplorerSignUpForm()
         context = {'form': form}

@@ -19,7 +19,7 @@ class ExplorerSignUpForm(UserCreationForm):
                   'password1', 'password2']
 
     def save(self, commit=True):
-        '''Performs validations, then saves the data submitted by user.'''
+        '''Initializes fields of the new User instance.'''
         user = super(ExplorerSignUpForm, self).save(commit=False)
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
@@ -27,6 +27,7 @@ class ExplorerSignUpForm(UserCreationForm):
 
         if commit is True:
             user.save()
+
         return user
 
 

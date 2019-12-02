@@ -1,1 +1,19 @@
-Hello 
+{% load static %}
+
+<nav class="top-nav navbar bg-dark">
+    <ul>
+        <!-- Brandmark and link to create button -->
+        <li>
+            <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+                <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
+                <!-- user sees their name if signed in -->
+                {% if not user.is_authenticated %}
+                    <span class="brandmark">Explorer<br>Buddy</span>
+                {% else %}
+                    <span class="brandmark">Hello, <br>{{ user.username }}!</span>
+                {% endif %}
+            </a>
+        </li>
+
+    </ul>
+</nav>

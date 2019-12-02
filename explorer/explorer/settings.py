@@ -61,12 +61,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'explorer.urls'
 
+PROJECT_TEMPLATES_PATH = os.path.join(BASE_DIR, 'templates').replace('\\', '/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # project templates
-            os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
+            PROJECT_TEMPLATES_PATH,
+            os.path.join(PROJECT_TEMPLATES_PATH, 'partials').replace('\\', '/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {

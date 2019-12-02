@@ -1,19 +1,32 @@
 {% load static %}
 
-<nav class="top-nav navbar bg-dark">
-    <ul>
-        <!-- Brandmark and link to create button -->
-        <li>
-            <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
-                <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
-                <!-- user sees their name if signed in -->
-                {% if not user.is_authenticated %}
-                    <span class="brandmark">Explorer<br>Buddy</span>
-                {% else %}
-                    <span class="brandmark">Hello, <br>{{ user.username }}!</span>
-                {% endif %}
-            </a>
-        </li>
+<nav class="top-nav navbar bg-dark navbar-expand-md">
+    <!-- Brandmark and link to create button -->
+        <div class="navbar-brand d-flex w-50 mr-auto">
+            <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
+            <!-- brand name -->
+            <span class="brandmark"><h3>Explorer Buddy</h3></span>
+        </div>
+            <form class="form-inline ml-auto">
+            <!-- is user is signed in, they can CRUD their notes, and log out -->
+            {% if user.is_authenticated %}
+                    <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
 
-    </ul>
+
+
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
+
+                <!-- Otherwise, the user can only login or signup -->
+            {% else %}
+
+                    <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
+
+                <br>
+
+                    <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
+
+            {% endif %}
+
+
+    </form>
 </nav>

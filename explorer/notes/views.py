@@ -124,6 +124,7 @@ class NoteUpdate(UpdateView):
             **response_kwargs
         )
 
+
     '''
     def get(self, request, slug):
         """Renders a page to edit a note created previously.

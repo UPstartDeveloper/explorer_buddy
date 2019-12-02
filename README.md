@@ -80,7 +80,8 @@ If you are writing tests for the `api` package, you may also like to consult the
 ## Built With
 - Django - web framework for the backend
 - Bootstrap 4 - styling the front end
-- SQLite 3 - schema for the database
+- SQLite 3 - schema for the database (development)
+- PostgreSql - production database schema
 - Django REST Framework - framework building the API (found in the [explorer_buddy.explorer.api package](/explorer_buddy/explorer/api/)).
 
 ## Authors

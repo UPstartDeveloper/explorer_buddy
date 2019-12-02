@@ -16,10 +16,6 @@
     font-size: 25px;
 }
 
-.sidenav .notelinks:hover {
-    color: yellow;
-}
-
 .sidenav .brandmark {
     font-size: 20px;
     padding: 0px 0px 5px 10px;
@@ -41,4 +37,8 @@ ul, ol, li {
 
 .img-circle {
       border-radius: 15px;
+}
+
+.top-nav {
+    color: #0c2412;
 }

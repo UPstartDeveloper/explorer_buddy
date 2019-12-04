@@ -27,15 +27,19 @@
         <ul>
             <!-- Brandmark and link to create button -->
             <li>
-                <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
-                    {% if not user.is_authenticated %}
-                        <span class="brandmark">Explorer<br>Buddy</span>
-                    {% else %}
-                        <span class="brandmark">Hello,<br>{{ user.username }}!</span>
-                    {% endif %}
+                    <span class="brandmark">Hello,<br>{{ user.username }}!</span>
                 </a>
+                {% else %}
+                <div class="navbar-brand d-flex w-50 mr-auto">
+                    <img class="img-circle " src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
+                    <!-- user sees their name if signed in -->
+                    <span class="brandmark text-white">Explorer<br>Buddy</span>
+                </div>
+                {% endif %}
             </li>
             <br>
             <!-- is user is signed in, they can CRUD their notes, and log out -->

@@ -31,6 +31,12 @@
     position: relative;
 }
 
+#notebook-container {
+    margin-left: 0px;
+    padding-left: 0px;
+    position: relative;
+}
+
 ul, ol, li {
     list-style-type: none;
 }

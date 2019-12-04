@@ -68,7 +68,10 @@ TEMPLATES = [
         'DIRS': [
             # project templates
             PROJECT_TEMPLATES_PATH,
-            os.path.join(PROJECT_TEMPLATES_PATH, 'partials').replace('\\', '/')
+            os.path.join(PROJECT_TEMPLATES_PATH,
+                         'partials').replace('\\', '/'),
+            os.path.join(PROJECT_TEMPLATES_PATH,
+                         'base_templates').replace('\\', '/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

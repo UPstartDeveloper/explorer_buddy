@@ -10,17 +10,33 @@
 
     <!-- USER SECTION -->
     <div class="container">
-        <div class="col-md-6">
-            <!-- account info -->
-        </div>
-        <div class="col-md-6">
-            <!-- user picture -->
-            {# {% if user.profile.mugshot is None %} #}
-                <!-- default image -->
-                <img src="{% static 'images/user-icon.png' %}" alt="User profile image">
-            {# {% else %} #}
-                <!-- display user uploaded image -->
-            {# {% endif %} #}
+        <div class="row">
+            <div class="col-md-6">
+                <!-- account info -->
+                <h2>Hello, {{ user.username }}!</h2>
+                <br>
+                <div class="row">
+                    <p>Account Information:</p>
+                </div>
+                <div class="row">
+                    <p>Username: {{ user.username }}</p>
+                </div>
+                <div class="row">
+                    <p>Name : {{ user.first_name }} {{ user.last_name }}</p>
+                </div>
+                <div class="row">
+                    <p>Email: {{ user.email }}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- user picture -->
+                {# {% if user.profile.mugshot is None %} #}
+                    <!-- default image -->
+                    <img src="{% static 'images/user-icon.png' %}" alt="User profile image">
+                {# {% else %} #}
+                    <!-- display user uploaded image -->
+                {# {% endif %} #}
+            </div>
         </div>
     </div>
 

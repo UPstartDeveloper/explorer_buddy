@@ -48,8 +48,20 @@
     </div>
 
     <!-- Notes Index -->
-    <div class="container">
+    <div class="container justify-content-center">
+        <div class="row">
+            <h2>Here Are Your Notes:</h2>
+        </div>
         <!-- cards for the user's notes -->
+        {% if notes %}
+          <div class="card-columns">
+            {% for note in notes %}
+              {% include "partials/notecard.html" %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-primary" role="alert">No pages to display.</div>
+        {% endif %}
     </div>
 
     <!-- FOOTER -->

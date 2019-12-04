@@ -105,13 +105,14 @@ class NoteUpdate(UpdateView):
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
 
+    """
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
-        """
+        '''
         Return a response, using the `response_class` for NoteCreate, with a
         template rendered with the given context.
         Pass response_kwargs to the constructor of the response class.
-        """
+        '''
         response_kwargs.setdefault('content_type', self.content_type)
         notes = self.queryset
         notes_context = {'notes': notes}
@@ -123,7 +124,7 @@ class NoteUpdate(UpdateView):
             using=self.template_engine,
             **response_kwargs
         )
-
+"""
 
     '''
     def get(self, request, slug):

@@ -39,6 +39,10 @@ ul, ol, li {
       border-radius: 15px;
 }
 
-.top-nav {
-    background-color: #100707;
+#top-nav {
+    background-color: #343a40 !important;
+}
+
+#top-nav .brandmark {
+    padding: 0px 0px 5px 10px;
 }

@@ -9,11 +9,14 @@
 {% block content %}
 
     <!-- USER SECTION -->
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <!-- account info -->
-                <h2>Hello, {{ user.username }}!</h2>
+                <div class="row">
+                    <h2>Hello, {{ user.username }}!</h2>
+                </div>
                 <br>
                 <div class="row">
                     <p>Account Information:</p>
@@ -26,6 +29,10 @@
                 </div>
                 <div class="row">
                     <p>Email: {{ user.email }}</p>
+                </div>
+                <br>
+                <div class="row">
+                    <a class="btn btn-info" href="{% url 'notes:create_note_form' %}">Back to Note Viewer</a>
                 </div>
             </div>
             <div class="col-md-6">

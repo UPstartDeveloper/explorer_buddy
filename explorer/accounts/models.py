@@ -12,7 +12,9 @@ class Profile(models.Model):
     def create_profile(sender, **kwargs):
         '''Instanitate a Profile for each new user who signs up.'''
         if kwargs['created'] is not None:
-            profile = Profile.objects.create(user=kwargs['accounts_profile.user_id'])
+            profile = (
+            Profile.objects.create(user=kwargs['accounts_profile.user_id'])
+        )
 
     post_save.connect(create_profile, sender=User)
 

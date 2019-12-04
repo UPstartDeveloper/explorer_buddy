@@ -9,7 +9,6 @@
 {% block content %}
 
     <!-- USER SECTION -->
-    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -31,9 +30,6 @@
                     <p>Email: {{ user.email }}</p>
                 </div>
                 <br>
-                <div class="row">
-                    <a class="btn btn-info" href="{% url 'notes:create_note_form' %}">Back to Note Viewer</a>
-                </div>
             </div>
             <div class="col-md-6">
                 <!-- user picture -->
@@ -56,12 +52,16 @@
         {% if notes %}
           <div class="card-columns">
             {% for note in notes %}
-              {% include "partials/notecard.html" %}
+               {% include "partials/notecard.html" %}
             {% endfor %}
           </div>
         {% else %}
           <div class="alert alert-primary" role="alert">No pages to display.</div>
         {% endif %}
+        <div class="row justify-content-end">
+            <a class="btn btn-success" href="{% url 'notes:create_note_form' %}">New Note</a>
+        </div>
+        <br>
     </div>
 
     <!-- FOOTER -->

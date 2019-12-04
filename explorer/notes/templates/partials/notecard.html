@@ -1,1 +1,12 @@
-.lvasf;iobvrwiobrfo;
+<div class="card mb-3">
+  <h5 class="card-header ">{{ note.title }}</h5>
+  <div class="card-body border-dark">
+    <p class="card-text text-dark">
+      {{ note.content|truncatewords_html:30 }}
+      <hr>
+      <div class="text-right"><a href="{% url 'notes:notes-detail-page' note.slug %}" title="Read More">Read More</a></div>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Last updated {{ note.modified|date:"SHORT_DATETIME_FORMAT" }}</small>
+  </div>
+</div>

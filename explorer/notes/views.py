@@ -87,29 +87,12 @@ class NoteCreate(CreateView):
         return super().form_valid(form)
 
 
-'''
-def update(request, slug):
-    instance = get_object_or_404(Note, slug=slug)
-    form = NoteForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
-        note = Note.objects.get(slug=instance.slug)
-        return redirect(reverse('notes/note_edit_form.html', note.slug))
-    return render(request, 'notes/note_edit_form.html', {'form': form})
-'''
-
-
 class NoteUpdate(UpdateView):
     '''Render a form to edit a note.'''
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        print(self.get_queryset().all())
-        return super().get(request, *args, **kwargs)
 
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
@@ -130,12 +113,6 @@ class NoteUpdate(UpdateView):
             using=self.template_engine,
             **response_kwargs
         )
-
-    def form_valid(self, form):
-        '''Initializes author of new Note by tracking the logged in user.'''
-        # assert self.request.user.is_authenticated is True
-        form.instance.author = self.request.user
-        return super().form_valid(form)
 
 
 class NoteDelete(DeleteView):

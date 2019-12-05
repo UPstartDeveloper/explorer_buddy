@@ -47,5 +47,5 @@ class Note(models.Model):
         if not self.pk:
             self.slug = slugify(self.title, allow_unicode=True)
 
-            # call save on the superclass
-            return super(Note, self).save(*args, **kwargs)
+        # call save on the superclass
+        return super(Note, self).save(*args, **kwargs)

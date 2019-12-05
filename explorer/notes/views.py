@@ -63,6 +63,7 @@ class NoteCreate(CreateView):
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
         """
+        Allows for other notes to appear on sidebar.
         Return a response, using the `response_class` for NoteCreate, with a
         template rendered with the given context.
         Pass response_kwargs to the constructor of the response class.
@@ -113,7 +114,8 @@ class NoteUpdate(UpdateView):
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
         """
-        Return a response, using the `response_class` for NoteCreate, with a
+        Allows for other notes to appear on sidebar.
+        Return a response, using the `response_class` for NoteUpdate, with a
         template rendered with the given context.
         Pass response_kwargs to the constructor of the response class.
         """
@@ -144,7 +146,7 @@ class NoteDelete(DeleteView):
            request(HttpRequest): the HTTP request sent to the server
 
            Returns:
-           render: a page of the Note
+           render: a page to confirm deletion
 
         """
         notes = self.queryset

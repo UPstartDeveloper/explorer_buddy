@@ -58,7 +58,7 @@ class NoteCreate(CreateView):
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_create_form.html'
-    queryset = Note.objects.all()
+    # queryset = Note.objects.all()
 
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
@@ -68,7 +68,7 @@ class NoteCreate(CreateView):
         Pass response_kwargs to the constructor of the response class.
         """
         response_kwargs.setdefault('content_type', self.content_type)
-        notes = self.queryset
+        notes = Note.objects.all()
         notes_context = {'notes': notes}
         context.update(notes_context)
         return self.response_class(
@@ -105,124 +105,11 @@ class NoteUpdate(UpdateView):
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
 
-    """
-    # credit to Classy CBV for providing source code to override
-    def render_to_response(self, context, **response_kwargs):
-        '''
-        Return a response, using the `response_class` for NoteCreate, with a
-        template rendered with the given context.
-        Pass response_kwargs to the constructor of the response class.
-        '''
-        response_kwargs.setdefault('content_type', self.content_type)
-        notes = self.queryset
-        notes_context = {'notes': notes}
-        context.update(notes_context)
-        return self.response_class(
-            request=self.request,
-            template=self.get_template_names(),
-            context=context,
-            using=self.template_engine,
-            **response_kwargs
-        )
-"""
-
-    '''
-    def get(self, request, slug):
-        """Renders a page to edit a note created previously.
-           Parameters:
-           slug(slug): specific slug of the Note instance.
-           request(HttpRequest): the HTTP request sent to the server
-
-           Returns:
-           render: a page of the Note
-
-        """
-        note = self.queryset.get(slug__iexact=slug)
-        notes = self.queryset
-        context = {
-            'note': note,
-            'notes': notes
-        }
-        return super().get(request)
-    '''
-    '''
-    def get_object(self):
-        slug = self.kwargs.get("slug")
-        return get_object_or_404(Note, slug=slug)
-
-    '''
-
-
-'''
-    def form_valid(self, request, slug):
-         note = Note.objects.get(slug=slug)
-         note.title = request.POST.get('title', '')
-         note.slug = request.POST.get('slug', '')
-         note.content = request.POST.get('content', '')
-         note.media = request.POST.get('media', '')
-         note.modified = request.POST.get('modified', '')
-         note.save()
-         success_url = self.get_success_url()
-         print(f'HEY! Object after submission: {obj}, success: {success_url}')
-         return render(request, 'notes:notes-detail-page', {'slug': note.slug})
-         return HttpResponseRedirect(reverse('notes:notes-detail-page',
-                                     kwargs={'slug': note.slug}))
-
-    def post(self, request, slug):
-        """Override the CreateView post method, so that it invokes
-           the subclass form_valid, which includes a parameter for request.
-        """
-        note = Note.objects.get(slug=slug)
-        # print(n)
-
-        if request.method == "POST":
-            form = NoteForm(request.POST)
-            if form.is_valid() is True:
-
-                note.title = request.POST.get('title', '')
-                note.slug = request.POST.get('slug', '')
-                note.content = request.POST.get('content', '')
-                note.media = request.POST.get('media', '')
-                note.modified = request.POST.get('modified', '')
-
-
-                note = form.save(commit=False)
-                note.author = request.user
-                note.modified = request.POST.get('modified', '')
-                note.save()
-
-
-                return HttpResponseRedirect(reverse('notes:notes-detail-page',
-                                            kwargs={'slug': note.slug}))
-
-        else:
-            form = NoteForm(instance=note)
-
-        return render(request, self.template_name, {'slug': note})
-
-    def get_success_url(self):
-        return reverse_lazy('notes:notes-detail-page', args=[self.object.slug])
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        print(f'HEY! Object before form submission: {self.object}')
-        return super().get(self, request, *args, **kwargs)
-    '''
-'''
-    def form_valid(self, form):
-        clean_data = form.cleaned_data
-        obj = self.object
-        self.object = form.save()
-        success_url = self.get_success_url()
-        print(f'HEY! Object after submission: {obj}, success: {success_url}')
-        return super().form_valid(form)
-    '''
-
 
 class NoteDelete(DeleteView):
     '''Render a form for user to delete a Note.'''
     model = Note
-    template_name = 'notes/one_note.html'
+    template_name = 'notes/note_confirm_delete.html'
     success_url = reverse_lazy('notes:create_note_form')
     queryset = Note.objects.all()
 

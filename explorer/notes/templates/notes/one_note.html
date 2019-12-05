@@ -30,6 +30,7 @@
                     <!-- Links for card footer -->
                     <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
                     <a href="{% url 'notes:delete_note' note.slug %}"><button class="btn btn-danger">Delete Note</button></a>
+                        <a href="{% url 'notes:index' %}"><button class="btn btn-info">See All Notes</button></a>
                 </div>
                 <br>
                 <p>Last updated: {{ note.modified }}</p>
@@ -39,6 +40,5 @@
     </span>
 
     <br>
-    {# <a href="{% url 'notes:notes-list-page' %}"><button class="btn btn-secondary">Back to All Notes</button></a>#}
 
 {% endblock %}

@@ -15,7 +15,7 @@ class Note(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                help_text="The explorer making this log.")
     slug = models.CharField(max_length=settings.NOTE_TITLE_MAX_LENGTH,
-                            blank=True, editable=True,
+                            blank=True, editable=False,
                             help_text="Unique URL path to access this note." +
                                       "Computer Generated.")
 
@@ -24,7 +24,8 @@ class Note(models.Model):
     )
     media = models.FileField(upload_to='image/',
                              help_text="Optional image to add to note.",
-                             blank=True)
+                             blank=True,
+                             null=True)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this note " +
                                    "was created. Auto-generated.")

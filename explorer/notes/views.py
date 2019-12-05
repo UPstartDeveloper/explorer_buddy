@@ -58,7 +58,7 @@ class NoteCreate(CreateView):
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_create_form.html'
-    # queryset = Note.objects.all()
+    queryset = Note.objects.all()
 
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
@@ -104,6 +104,30 @@ class NoteUpdate(UpdateView):
     form_class = NoteForm
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        print(self.get_queryset().all())
+        return super().get(request, *args, **kwargs)
+
+    # credit to Classy CBV for providing source code to override
+    def render_to_response(self, context, **response_kwargs):
+        """
+        Return a response, using the `response_class` for NoteCreate, with a
+        template rendered with the given context.
+        Pass response_kwargs to the constructor of the response class.
+        """
+        response_kwargs.setdefault('content_type', self.content_type)
+        notes = Note.objects.all()
+        notes_context = {'notes': notes}
+        context.update(notes_context)
+        return self.response_class(
+            request=self.request,
+            template=self.get_template_names(),
+            context=context,
+            using=self.template_engine,
+            **response_kwargs
+        )
 
 
 class NoteDelete(DeleteView):

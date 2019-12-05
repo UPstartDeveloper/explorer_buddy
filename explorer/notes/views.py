@@ -145,10 +145,11 @@ class NoteUpdate(UpdateView):
         }
         return super().get(request)
     '''
+    '''
     def get_object(self):
         slug = self.kwargs.get("slug")
         return get_object_or_404(Note, slug=slug)
-    '''
+
     '''
 
 

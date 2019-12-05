@@ -10,10 +10,14 @@
 }
 
 .sidenav .note-links {
-    padding: 6px 8px 6px 0px;
+    padding: 6px 8px 6px 6px;
     text-decoration: none;
     display: block;
     font-size: 25px;
+}
+
+.sidenav .nav-item {
+    padding-left: 16px;
 }
 
 .sidenav .brandmark {

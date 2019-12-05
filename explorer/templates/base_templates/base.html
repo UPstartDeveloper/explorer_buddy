@@ -24,9 +24,9 @@
     <!-- Credit to the 'Tech with Tim' YouTube channel for inspiring this code: https://www.youtube.com/watch?v=914JH3t64Kg-->
     {% block navbar %}
     <div class="sidenav bg-dark">
-        <ul>
+        <ul class="nav flex-column">
             <!-- Brandmark and link to create button -->
-            <li>
+            <li class="nav-item">
                 {% if user.is_authenticated %}
                 <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
@@ -34,7 +34,7 @@
                     <span class="brandmark">Hello,<br>{{ user.username }}!</span>
                 </a>
                 {% else %}
-                <div class="navbar-brand d-flex w-50 mr-auto">
+                <div class="nav-item navbar-brand d-flex w-50 mr-auto">
                     <img class="img-circle " src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
                     <span class="brandmark text-white">Explorer<br>Buddy</span>
@@ -44,26 +44,26 @@
             <br>
             <!-- is user is signed in, they can CRUD their notes, and log out -->
             {% if user.is_authenticated %}
-                <li>
+                <li class="nav-item">
                     <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
                 </li>
                 <br>
                 {% for note in notes %}
-                    <li>
+                    <li class="nav-item">
                         <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
                     </li>
                     <br>
                 {% endfor %}
-                <li>
+                <li class="nav-item">
                     <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
                 </li>
                 <!-- Otherwise, the user can only login or signup -->
             {% else %}
-                <li>
+                <li class="nav-item">
                     <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
                 </li>
                 <br>
-                <li>
+                <li class="nav-item">
                     <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
                 </li>
             {% endif %}

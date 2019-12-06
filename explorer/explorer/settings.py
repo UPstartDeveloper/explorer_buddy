@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'notes.apps.NotesConfig',
     'accounts.apps.AccountsConfig',
     'crispy_forms',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

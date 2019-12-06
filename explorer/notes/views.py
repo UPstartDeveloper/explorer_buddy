@@ -88,7 +88,7 @@ class NoteCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class NoteUpdate(LoginRequiredMixin, UpdateView):
+class NoteUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     '''Submit a form to edit a note.'''
     model = Note
     form_class = NoteForm
@@ -116,8 +116,17 @@ class NoteUpdate(LoginRequiredMixin, UpdateView):
             **response_kwargs
         )
 
+    def test_func(self):
+        '''Checks that the user updating the note is its author.'''
+        note = self.get_object()
+        if self.request.user == note.author:
+            return True
+        else:
+            # redirect back to DetailView, inform the user they're not allowed
+            pass
 
-class NoteDelete(LoginRequiredMixin, DeleteView):
+
+class NoteDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     '''User is able to delete a Note.'''
     model = Note
     template_name = 'notes/note_confirm_delete.html'
@@ -142,3 +151,12 @@ class NoteDelete(LoginRequiredMixin, DeleteView):
             'note': note
         }
         return render(request, self.template_name, context)
+
+    def test_func(self):
+        '''Checks that the user deleting the note is its author.'''
+        note = self.get_object()
+        if self.request.user == note.author:
+            return True
+        else:
+            # redirect back to DetailView, inform the user they're not allowed
+            pass

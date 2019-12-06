@@ -11,5 +11,10 @@ urlpatterns = ([
         path('<slug:slug>/edit/', NoteUpdate.as_view(), name="edit_note_form"),
         path('<slug:slug>/delete/', NoteDelete.as_view(), name='delete_note'),
         path('<slug:slug>/', NoteDetail.as_view(), name='notes-detail-page'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
+])
+
+if settings.DEBUG is True:
+    urlpatterns += [static(settings.MEDIA_URL,
+                           document_root=settings.MEDIA_ROOT)]
+    urlpatterns += [static(settings.STATIC_URL,
+                           document_root=settings.STATIC_ROOT)]

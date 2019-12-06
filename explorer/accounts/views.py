@@ -18,27 +18,11 @@ class SignUpView(CreateView):
     template_name = 'accounts/signup.html'
 
 
-"""
-def signup(request):
-    '''Display form where user can create a new account.'''
-    if request.method == 'POST':
-        form = ExplorerSignUpForm(request.POST)
-        if form.is_valid():
-            print('the form is valid')
-            form.save()
-            return redirect(reverse('accounts:login'))
-        print('the form is invalid')
-    else:
-        form = ExplorerSignUpForm()
-        context = {'form': form}
-        return render(request, 'accounts/signup.html', context)
-"""
-
-
 class PasswordResetView(auth_views.PasswordResetView):
     '''Emails user with a link to reset their password.'''
     success_url = reverse_lazy('accounts:password_reset_done')
     template_name = 'accounts/password_reset/enter_email.html'
+    email_template_name = 'accounts/password_reset/email_to_user.html'
 
 
 class PasswordResetConfirm(auth_views.PasswordResetConfirmView):

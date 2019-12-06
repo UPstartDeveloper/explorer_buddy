@@ -165,7 +165,7 @@ STATICFILES_DIRS = [
 # used to render images from ImageField in Note model
 # credit goes to: Justin Mitchel at https://tinyurl.com/vofmamq
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(LOCAL_CDN_PATH, 'media')
+MEDIA_ROOT = os.path.join(LOCAL_CDN_PATH, '/media/images')
 
 
 # Settings for sending email

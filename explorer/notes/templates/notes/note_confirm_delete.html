@@ -16,6 +16,6 @@
         <h3>Are you sure you would like to delete "{{ note }}"?</h3>
         <button class="btn btn-danger" type="submit">Confirm</button>
     </form>
-    <a href="{% url 'notes:notes-detail-page' note.slug %}"><button class="btn btn-primary">Back to Notes List</button></a>
+    <a href="{% url 'notes:notes-detail-page' note.slug %}"><button class="btn btn-primary">Cancel</button></a>
 
 {% endblock %}

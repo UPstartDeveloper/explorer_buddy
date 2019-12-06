@@ -4,7 +4,10 @@
 {% block content %}
 
     <h1>Edit Your Note</h1>
-    
+
     {% include 'partials/view_form.html' %}
+
+    <!-- Cancel editing -->
+    <a href="{% url 'notes:notes-detail-page' note.slug %}" class="btn btn-danger">Cancel Editing</a>
 
 {% endblock %}

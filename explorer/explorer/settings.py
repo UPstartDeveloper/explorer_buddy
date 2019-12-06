@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes.apps.NotesConfig',
     'accounts.apps.AccountsConfig',
-    'crispy_forms',
-    'django.contrib.humanize',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

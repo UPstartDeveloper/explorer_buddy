@@ -18,7 +18,7 @@ class NoteList(LoginRequiredMixin, ListView):
     '''Renders a list of all Notes.'''
     model = Note
     template_name = 'notes/notebook.html'
-    # login_url = 'accounts:login'
+    login_url = 'accounts:login'
 
     def get(self, request):
         ''' Get a list of all notes currently in the database.'''
@@ -119,11 +119,7 @@ class NoteUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         '''Checks that the user updating the note is its author.'''
         note = self.get_object()
-        if self.request.user == note.author:
-            return True
-        else:
-            # redirect back to DetailView, inform the user they're not allowed
-            pass
+        return (self.request.user == note.author)
 
 
 class NoteDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -155,8 +151,4 @@ class NoteDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         '''Checks that the user deleting the note is its author.'''
         note = self.get_object()
-        if self.request.user == note.author:
-            return True
-        else:
-            # redirect back to DetailView, inform the user they're not allowed
-            pass
+        return (self.request.user == note.author)

@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import (ModelFormMixin, CreateView, UpdateView,
-                                       DeleteView)
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import (
+    CreateView,
+    UpdateView,
+    DeleteView)
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from notes.models import Note
 from django.contrib.auth.models import User
@@ -20,7 +22,7 @@ class NoteList(LoginRequiredMixin, ListView):
 
     def get(self, request):
         ''' Get a list of all notes currently in the database.'''
-        notes = self.get_queryset().all()
+        notes = self.get_queryset().filter(author=request.user)
         return render(request, self.template_name, {
             'notes': notes
         })
@@ -43,7 +45,7 @@ class NoteDetail(LoginRequiredMixin, DetailView):
 
         """
         note = self.get_queryset().get(slug__iexact=slug)
-        notes = self.get_queryset().all()
+        notes = self.get_queryset().filter(author=request.user)
         context = {
             'note': note,
             'notes': notes
@@ -68,7 +70,7 @@ class NoteCreate(LoginRequiredMixin, CreateView):
         Pass response_kwargs to the constructor of the response class.
         """
         response_kwargs.setdefault('content_type', self.content_type)
-        notes = Note.objects.all()
+        notes = Note.objects.filter(author=self.request.user)
         notes_context = {'notes': notes}
         context.update(notes_context)
         return self.response_class(
@@ -103,7 +105,7 @@ class NoteUpdate(LoginRequiredMixin, UpdateView):
         Pass response_kwargs to the constructor of the response class.
         """
         response_kwargs.setdefault('content_type', self.content_type)
-        notes = Note.objects.all()
+        notes = self.queryset.filter(author=self.request.user)
         notes_context = {'notes': notes}
         context.update(notes_context)
         return self.response_class(
@@ -133,7 +135,7 @@ class NoteDelete(LoginRequiredMixin, DeleteView):
            render: a page to confirm deletion
 
         """
-        notes = self.queryset
+        notes = self.queryset.filter(author=request.user)
         note = self.queryset.get(slug__iexact=slug)
         context = {
             'notes': notes,

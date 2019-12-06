@@ -12,10 +12,11 @@ from notes.forms import NoteForm
 import explorer
 
 
-class NoteList(ListView):
+class NoteList(LoginRequiredMixin, ListView):
     '''Renders a list of all Notes.'''
     model = Note
     template_name = 'notes/notebook.html'
+    # login_url = 'accounts:login'
 
     def get(self, request):
         ''' Get a list of all notes currently in the database.'''
@@ -25,10 +26,11 @@ class NoteList(ListView):
         })
 
 
-class NoteDetail(DetailView):
+class NoteDetail(LoginRequiredMixin, DetailView):
     '''Display the information currently on one Note.'''
     model = Note
     template_name = 'notes/one_note.html'
+    login_url = 'accounts:login'
 
     def get(self, request, slug):
         """Renders a page to show a specific note in full detail.
@@ -40,10 +42,6 @@ class NoteDetail(DetailView):
            render: a page of the Note
 
         """
-        # print(f'Static dir: {explorer.settings.STATICFILES_DIRS[0]}')
-        # print(f'Static root: {explorer.settings.STATIC_ROOT}')
-        # print(f'Media url: {explorer.settings.MEDIA_URL}')
-        # print(f'Media root: {explorer.settings.MEDIA_ROOT}')
         note = self.get_queryset().get(slug__iexact=slug)
         notes = self.get_queryset().all()
         context = {
@@ -53,12 +51,13 @@ class NoteDetail(DetailView):
         return render(request, self.template_name, context)
 
 
-class NoteCreate(CreateView):
-    '''Render a form to create new note.'''
+class NoteCreate(LoginRequiredMixin, CreateView):
+    '''Submit a form to create new note.'''
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_create_form.html'
     queryset = Note.objects.all()
+    login_url = 'accounts:login'
 
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
@@ -87,12 +86,13 @@ class NoteCreate(CreateView):
         return super().form_valid(form)
 
 
-class NoteUpdate(UpdateView):
-    '''Render a form to edit a note.'''
+class NoteUpdate(LoginRequiredMixin, UpdateView):
+    '''Submit a form to edit a note.'''
     model = Note
     form_class = NoteForm
     template_name = 'notes/note_edit_form.html'
     queryset = Note.objects.all()
+    login_url = 'accounts:login'
 
     # credit to Classy CBV for providing source code to override
     def render_to_response(self, context, **response_kwargs):
@@ -115,12 +115,13 @@ class NoteUpdate(UpdateView):
         )
 
 
-class NoteDelete(DeleteView):
-    '''Render a form for user to delete a Note.'''
+class NoteDelete(LoginRequiredMixin, DeleteView):
+    '''User is able to delete a Note.'''
     model = Note
     template_name = 'notes/note_confirm_delete.html'
     success_url = reverse_lazy('notes:create_note_form')
     queryset = Note.objects.all()
+    login_url = 'accounts:login'
 
     def get(self, request, slug):
         """Renders a form to delete a Note.

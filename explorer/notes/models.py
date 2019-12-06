@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
+import os
+from explorer import settings
 
 
 # Create your models here.
@@ -22,7 +24,7 @@ class Note(models.Model):
     content = models.TextField(
         help_text="Log your observations, questions, and hypotheses here."
     )
-    media = models.FileField(upload_to='image/',
+    media = models.FileField(upload_to='static/images/',
                              help_text="Optional image to add to note.",
                              blank=True,
                              null=True)

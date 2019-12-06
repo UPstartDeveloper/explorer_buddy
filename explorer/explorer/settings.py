@@ -149,7 +149,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+LOCAL_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+
+STATIC_ROOT = os.path.join(LOCAL_CDN_PATH, 'static')
 STATIC_URL = '/static/'
 
 # mock live cdn i.e. AWS S3
@@ -163,7 +165,7 @@ STATICFILES_DIRS = [
 # used to render images from ImageField in Note model
 # credit goes to: Justin Mitchel at https://tinyurl.com/vofmamq
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(LOCAL_CDN_PATH, 'media')
 
 
 # Settings for sending email

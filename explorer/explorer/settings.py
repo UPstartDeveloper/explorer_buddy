@@ -165,8 +165,7 @@ STATICFILES_DIRS = [
 # used to render images from ImageField in Note model
 # credit goes to: Justin Mitchel at https://tinyurl.com/vofmamq
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(LOCAL_CDN_PATH, '/media/images')
-
+MEDIA_ROOT = os.path.join(LOCAL_CDN_PATH, 'media')
 
 # Settings for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -178,8 +177,7 @@ EMAIL_HOST_PASSWORD = (
                        str(os.getenv('EMAIL_PASS_1')) + " " +
                        str(os.getenv('EMAIL_PASS_2')) + " " +
                        str(os.getenv('EMAIL_PASS_3')) + " " +
-                       str(os.getenv('EMAIL_PASS_4'))
-                      )
+                       str(os.getenv('EMAIL_PASS_4')))
 
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')
 

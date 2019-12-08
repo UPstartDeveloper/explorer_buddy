@@ -1,10 +1,13 @@
 <div class="card border-info mb-3" style="max-width: 20rem;">
+    {% if note.media.url is not None %}
+        <img class="card-img-top" src="{{ note.media.url }}" alt="Image for this note." width=400px height=200px>
+    {% else %}{% endif %}
   <h5 class="card-header ">{{ note.title }}</h5>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
       {{ note.content|truncatewords_html:30 }}
       <hr>
-      <div class="text-right"><a href="{% url 'notes:notes-detail-page' note.slug %}" title="Read More">Read More</a></div>
+      <div class="text-right"><a href="{% url 'notes:notes-detail-page' note.slug %}" title="See More">See More</a></div>
   </div>
   <div class="card-footer">
   <small class="text-muted">Last updated {{ note.modified|date:"SHORT_DATETIME_FORMAT" }}</small>

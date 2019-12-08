@@ -9,16 +9,6 @@ class Profile(models.Model):
     mugshot = models.ImageField(upload_to='images/',
                                 default='images/user-icon.png',
                                 help_text="User profile image")
-    """
-    def create_profile(sender, **kwargs):
-        '''Instanitate a Profile for each new user who signs up.'''
-        if kwargs['created'] is not None:
-            profile = (
-                Profile.objects.create(user=kwargs['accounts_profile.user_id'])
-            )
-
-    post_save.connect(create_profile, sender=User)
-    """
 
     def __str__(self):
         '''Return the related User's username.'''

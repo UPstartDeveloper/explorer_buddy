@@ -2,21 +2,11 @@
 
 <!-- Uses side navbar -->
 
-
 {% load static %}
 {% block content %}
 <span class="d-block">
     <div class="card">
-        <!-- <img src="{% static 'media/nikolas-noonan-fQM8cbGY6iQ-unsplash_G6OvGtz'}" alt="" class="card-img-top">-->
-        <!-- Commented to focus on UI/UX   {# {% if note.media is null %} #}-->
-        <!-- {#{% if note.media is not None %}
-            <img src="{{ note.media.image.url }}" alt="Picture goes here.">
-            <br><br>
-        {% endif %} #} -->
-        {% if note.title == 'Hurricanes' %}
-            <img src="{% static 'images/nikolas-noonan-fQM8cbGY6iQ-unsplash_G6OvGtz.jpg' %}" height=750 width=250 alt="" class="card-img-top">
-        {% else %}
-        {% endif %}
+            <img class="card-img-top" src="{{ note.media.url }}" alt="Image for this note.">
         <div class="card-header text-center">
             <h1>{{ note.title }}</h1>
         </div>
@@ -30,7 +20,7 @@
                     <!-- Links for card footer -->
                     <a href="{% url 'notes:edit_note_form' note.slug %}"><button class="btn btn-primary">Update Note</button></a>
                     <a href="{% url 'notes:delete_note' note.slug %}"><button class="btn btn-danger">Delete Note</button></a>
-                        <a href="{% url 'notes:index' %}"><button class="btn btn-info">See All Notes</button></a>
+                    <a href="{% url 'notes:index' %}"><button class="btn btn-info">See All Notes</button></a>
                 </div>
                 <br>
                 <p>Last updated: {{ note.modified }}</p>

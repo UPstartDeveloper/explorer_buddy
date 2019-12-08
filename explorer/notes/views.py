@@ -82,11 +82,9 @@ class NoteCreate(LoginRequiredMixin, CreateView):
         )
 
     def form_valid(self, form):
-        '''Initializes author of new Note by tracking the logged in user.'''
-        # assert self.request.user.is_authenticated is True
+        '''Initializes author and image (if there is one) of new Note.'''
         form.instance.author = self.request.user
-        print(f"This is the request object: {self.request.FILES}")
-        form.instance.media = self.request.FILES.get('file')
+        form.instance.media = self.request.FILES.get('media')
         return super().form_valid(form)
 
 

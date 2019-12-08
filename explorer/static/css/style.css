@@ -26,18 +26,12 @@
 }
 
 .top-nav .brandmark {
-    padding: 0px 0px 5px 10px;
+    padding: 0px 0px 5px 0px;
 }
 
 .container {
     margin-left: 200px;
     padding-left: 10px;
-    position: relative;
-}
-
-#notebook-container {
-    margin-left: 0px;
-    padding-left: 0px;
     position: relative;
 }
 

@@ -34,12 +34,8 @@
             </div>
             <div class="col-md-6">
                 <!-- user picture -->
-                {# {% if user.profile.mugshot is None %} #}
-                    <!-- default image -->
-                    <img src="{% static 'images/user-icon.png' %}" alt="User profile image">
-                {# {% else %} #}
-                    <!-- display user uploaded image -->
-                {# {% endif %} #}
+                <img src="{{ user.profile.mugshot.url }}" alt="Profile picture." height=400px width=390px>
+                <!-- form to upload new image -->
             </div>
         </div>
     </div>

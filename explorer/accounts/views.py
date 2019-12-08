@@ -7,8 +7,7 @@ from django.shortcuts import redirect
 import django.contrib.auth.views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-
-# Create your views here.
+from accounts.models import Profile
 
 
 class SignUpView(CreateView):
@@ -16,6 +15,12 @@ class SignUpView(CreateView):
     form_class = ExplorerSignUpForm
     success_url = reverse_lazy('accounts:login')
     template_name = 'accounts/signup.html'
+
+    def form_valid(self, form):
+        '''Save the new User, and a new Profile for them, in the database.'''
+        self.object = form.save()
+        Profile.objects.create(user=self.object)
+        return super().form_valid(form)
 
 
 class PasswordResetView(auth_views.PasswordResetView):

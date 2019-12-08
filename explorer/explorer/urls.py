@@ -29,7 +29,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
 ]
 
-if settings.DEBUG:
+# used to serve static files in development
+if settings.DEBUG is True:
     from django.conf.urls.static import static
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)

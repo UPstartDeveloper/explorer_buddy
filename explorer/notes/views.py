@@ -121,6 +121,11 @@ class NoteUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         note = self.get_object()
         return (self.request.user == note.author)
 
+    def form_valid(self, form):
+        '''Changes the image (if there is a new uploadd) of the Note.'''
+        form.instance.media = self.request.FILES.get('media')
+        return super().form_valid(form)
+
 
 class NoteDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     '''User is able to delete a Note.'''

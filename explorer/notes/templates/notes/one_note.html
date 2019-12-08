@@ -6,7 +6,9 @@
 {% block content %}
 <span class="d-block">
     <div class="card">
-            <img class="card-img-top" src="{{ note.media.url }}" alt="Image for this note.">
+            {% if note.media.url is not None %}
+                <img class="card-img-top" src="{{ note.media.url }}" alt="Image for this note.">
+            {% else %}{% endif %}
         <div class="card-header text-center">
             <h1>{{ note.title }}</h1>
         </div>

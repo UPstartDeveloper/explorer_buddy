@@ -84,6 +84,8 @@ If you are writing tests for the `api` package, you may also like to consult the
 - SQLite 3 - schema for the database (development)
 - PostgreSql - production database schema
 - Django REST Framework - framework building the API (found in the [explorer_buddy.explorer.api package](/explorer_buddy/explorer/api/)).
+- AWS S3 - file storage for image uploads
+- Gmail - email server 
 
 ## Authors
 - **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration

@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes.apps.NotesConfig',
     'accounts.apps.AccountsConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -154,10 +155,6 @@ LOCAL_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
 STATIC_ROOT = os.path.join(LOCAL_CDN_PATH, 'static')
 STATIC_URL = '/static/'
 
-# mock live cdn i.e. AWS S3
-# LOCAL_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
-# STATIC_ROOT = os.path.join(LOCAL_CDN_PATH, 'static')
-
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'static/'),  # represents the local version
  ]
@@ -180,5 +177,13 @@ EMAIL_HOST_PASSWORD = (
                        str(os.getenv('EMAIL_PASS_4')))
 
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_USERNAME')
+
+# settings for using AWS S3 file storage
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())

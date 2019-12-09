@@ -43,12 +43,12 @@ class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
 
 
 class ProfileDetail(DetailView):
-    pass
+    template_name = 'accounts/profile/view.html'
 
 
 class ProfileUpdate(UpdateView):
-    pass
+    template_name = 'accounts/profile/edit.html'
 
 
 class ProfileDelete(DeleteView):
-    pass
+    template_name = 'accounts/profile/delete.html'

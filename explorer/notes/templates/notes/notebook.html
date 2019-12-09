@@ -9,9 +9,11 @@
 
     <!-- Notes Index -->
     <div class="container justify-content-center">
+        <br>
         <div class="row">
             <h2>Here Are Your Notes, {{ user.username }}:</h2>
         </div>
+        <br>
         <!-- cards for the user's notes -->
         {% if notes %}
           <div class="card-columns">
@@ -22,8 +24,8 @@
         {% else %}
           <div class="alert alert-primary" role="alert">You don't have any notes to display.</div>
         {% endif %}
-        <br>
     </div>
+    <br>
 
     <!-- FOOTER -->
     <div class="row bg-dark p-5 text-white">

@@ -2,7 +2,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
-from accounts.views import PasswordResetConfirm, PasswordResetView, SignUpView
+from accounts.views import (
+    PasswordResetConfirm,
+    PasswordResetView,
+    SignUpView,
+    ProfileDetail,
+    ProfileUpdate,
+    ProfileDelete)
 
 
 app_name = 'accounts'
@@ -15,6 +21,8 @@ urlpatterns = [
          name='login'),
     path('logout/',
          auth_views.LogoutView.as_view(), name='logout'),
+    # views to see/change account info
+    path('<str:username>/profile/', ProfileDetail.as_view(), name='user_info'),
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),

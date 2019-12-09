@@ -8,10 +8,10 @@
             <span class="brandmark text-white"><h3>Explorer Buddy</h3></span>
         </div>
         <form class="form-inline ml-auto">
-            <!-- is user is signed in, they can CRUD their notes, and log out -->
+            <!-- is user is signed in, they can CRUD their notes, log out, or see account info -->
             {% if user.is_authenticated %}
-                <!--<a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>-->
-                <a class="btn btn-success" href="{% url 'notes:create_note_form' %}">New Note</a>
+                <a class="btn btn-info" href="{% url 'accounts:user_info' user.username %}">My Account</a>
+                <a class="btn btn-success ml-2" href="{% url 'notes:create_note_form' %}">New Note</a>
                 <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
             <!-- Otherwise, the user can only login or signup -->
             {% else %}

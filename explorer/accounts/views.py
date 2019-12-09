@@ -91,8 +91,9 @@ class ProfilePictureUpdate(UpdateView):
         return url
 
     def form_valid(self, form):
-        '''Changes the image (if there is one) of the Note.'''
-        form.instance.media = self.request.FILES.get('mugshot')
+        '''Changes the image of the user's profile.'''
+        form.instance.profile.mugshot = self.request.FILES.get('mugshot')
+        form.instance.profile.save()
         return super().form_valid(form)
 
 

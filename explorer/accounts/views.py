@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from accounts.forms import ExplorerSignUpForm
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import (
+    CreateView,
+    UpdateView,
+    DeleteView)
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 import django.contrib.auth.views as auth_views
@@ -22,9 +26,6 @@ class SignUpView(SuccessMessageMixin, CreateView):
         '''Save the new User, and a new Profile for them, in the database.'''
         self.object = form.save()
         Profile.objects.create(user=self.object)
-        # the message is inspired by Corey Schafer, https://tinyurl.com/wab2qzj
-        # login_successful = f'Welcome to Explorer Buddy! You may now log in.'
-        # messages.success(self.request, login_successful)
         return super().form_valid(form)
 
 
@@ -39,3 +40,15 @@ class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
     '''Presents the form for entering a new password.'''
     success_url = reverse_lazy('accounts:password_reset_complete')
     template_name = 'accounts/password_reset/new_password.html'
+
+
+class ProfileDetail(DetailView):
+    pass
+
+
+class ProfileUpdate(UpdateView):
+    pass
+
+
+class ProfileDelete(DeleteView):
+    pass

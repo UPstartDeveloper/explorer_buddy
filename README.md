@@ -25,7 +25,7 @@ These instructions will help you get a copy of the repository up and running on 
 - Fork this repository (click the "Fork" button at the top right of the page, then click on your profile image).
 - Clone your forked repository onto your local machine
 ```
-git clone hhttps://github.com/<YOUR_GITHUB_USERNAME>/explorer_buddy.git
+git clone https://github.com/<YOUR_GITHUB_USERNAME>/explorer_buddy.git
 ```
 - Start your virtual environment, and be sure to see the 'Installing Requirements' section below to make sure you have all the required dependencies!
 
@@ -85,7 +85,7 @@ If you are writing tests for the `api` package, you may also like to consult the
 - PostgreSql - production database schema
 - Django REST Framework - framework building the API (found in the [explorer_buddy.explorer.api package](/explorer_buddy/explorer/api/)).
 - AWS S3 - file storage for image uploads
-- Gmail - email server 
+- Gmail - email server
 
 ## Authors
 - **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration
@@ -96,7 +96,7 @@ This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) fo
 ## Acknowledgements
 - Mom and Dad - Thank you both for helping me discover a love of science from an early age.
 None of what I accomplish at Make School would be possible without your support.
-- [Django Project](https://www.djangoproject.com/) - This project's backend is built off the Django web framework for Python.
+- [Django Software Foundation](https://www.djangoproject.com/) - This project's backend is built off the Django web framework for Python.
 Thanks so much for all the open source contributions you guys are making!
 - Dani Roxberry and Meredith Murphy (Make School BEW Instructors) - thank you both for helping me learn how to use the Django Web Framework!
 - Billie Thompson - inspired this README.md file with her amazing [README.md template on GitHub Gist!](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)

@@ -86,7 +86,7 @@ class ProfilePictureUpdate(UpdateView):
         return (self.request.user.profile == user.profile)
 
     def form_valid(self, form):
-        '''Changes the image (if there is a new uploadd) of the Note.'''
+        '''Changes the image (if there is one) of the Note.'''
         form.instance.media = self.request.FILES.get('media')
         return super().form_valid(form)
 

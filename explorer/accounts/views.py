@@ -77,7 +77,7 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 class ProfilePictureUpdate(UpdateView):
     template_name = 'accounts/profile/edit_image.html'
     form_class = ProfileForm
-    queryset = User.objects.all()
+    queryset = Profile.objects.all()
     login_url = 'accounts:login'
 
     def test_func(self):

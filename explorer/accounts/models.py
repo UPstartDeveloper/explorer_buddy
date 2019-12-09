@@ -16,6 +16,6 @@ class Profile(models.Model):
         return f"{self.user.username}'s Profile"
 
     def get_absolute_url(self):
-        '''Returns a fully qualified path for a profile (i.e. /my-note).'''
+        '''Returns a fully qualified path for user profile.'''
         path_components = {'pk': self.user.id}
         return reverse('accounts:user_info', kwargs=path_components)

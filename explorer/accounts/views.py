@@ -16,6 +16,7 @@ from accounts.models import Profile
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from accounts.forms import ProfileForm
+from django.urls import reverse
 
 
 class SignUpView(SuccessMessageMixin, CreateView):
@@ -77,17 +78,21 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 class ProfilePictureUpdate(UpdateView):
     template_name = 'accounts/profile/edit_image.html'
     form_class = ProfileForm
-    queryset = Profile.objects.all()
-    login_url = 'accounts:login'
+    queryset = User.objects.all()
 
     def test_func(self):
         '''Checks that the user updating the profile image is its user.'''
         user = self.get_object()
         return (self.request.user.profile == user.profile)
 
+    def get_success_url(self):
+        '''Redirect to the profile page of the User.'''
+        url = self.object.profile.get_absolute_url()
+        return url
+
     def form_valid(self, form):
         '''Changes the image (if there is one) of the Note.'''
-        form.instance.media = self.request.FILES.get('media')
+        form.instance.media = self.request.FILES.get('mugshot')
         return super().form_valid(form)
 
 

@@ -22,7 +22,7 @@ urlpatterns = [
     path('logout/',
          auth_views.LogoutView.as_view(), name='logout'),
     # views to see/change account info
-    path('<int:user_id>/profile/', ProfileDetail.as_view(), name='user_info'),
+    path('<int:pk>/profile/', ProfileDetail.as_view(), name='user_info'),
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),

@@ -50,7 +50,7 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     login_url = 'accounts:login'
     queryset = User.objects.all()
 
-    def get(self, request, user_id):
+    def get(self, request, pk):
         """Renders a page to show a specific note in full detail.
            Parameters:
            user_id(int): pk of the User object requesting the page
@@ -60,7 +60,7 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
            render: a page of the Profile information
 
         """
-        user = self.queryset.get(id=user_id)
+        user = self.queryset.get(id=pk)
         profile = user.profile
         context = {
             'profile': profile
@@ -69,9 +69,8 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
     def test_func(self):
         '''Ensures that users can only view their own Profiles.'''
-        return True
-        # user = self.request.user
-        # return (self.request.user == profile.user)
+        user = self.get_object()
+        return (self.request.user.profile == user.profile)
 
 
 class ProfileUpdate(UpdateView):

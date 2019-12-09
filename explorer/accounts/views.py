@@ -8,18 +8,23 @@ import django.contrib.auth.views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from accounts.models import Profile
+from django.contrib.messages.views import SuccessMessageMixin
 
 
-class SignUpView(CreateView):
+class SignUpView(SuccessMessageMixin, CreateView):
     '''Display form where user can create a new account.'''
     form_class = ExplorerSignUpForm
     success_url = reverse_lazy('accounts:login')
     template_name = 'accounts/signup.html'
+    success_message = 'Welcome to Explorer Buddy! You may now log in.'
 
     def form_valid(self, form):
         '''Save the new User, and a new Profile for them, in the database.'''
         self.object = form.save()
         Profile.objects.create(user=self.object)
+        # the message is inspired by Corey Schafer, https://tinyurl.com/wab2qzj
+        # login_successful = f'Welcome to Explorer Buddy! You may now log in.'
+        # messages.success(self.request, login_successful)
         return super().form_valid(form)
 
 

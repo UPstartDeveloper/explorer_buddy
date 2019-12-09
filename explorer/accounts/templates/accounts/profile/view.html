@@ -39,6 +39,8 @@
             <div class="col-md-6">
                 <!-- user picture -->
                 <img src="{{ user.profile.mugshot.url }}" alt="Profile picture." height=400px width=390px>
+                <br><br>
+                <a class="btn btn-primary" href="{% url 'accounts:change_image' user.id %}">Change Profile Image</a>
             </div>
         </div>
     </div>

@@ -12,6 +12,10 @@
     <h2>Change Your Profile Image</h2>
     <br><br>
     {% include 'partials/view_form.html' %}
+
+    <!-- Cancel editing -->
+    <a class="btn btn-info" href="{% url 'accounts:user_info' user.id %}">Cancel Changes</a>
 </div>
+
 
 {% endblock %}

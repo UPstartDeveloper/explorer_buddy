@@ -8,11 +8,13 @@ from django.views.generic.edit import (
     DeleteView)
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 import django.contrib.auth.views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from accounts.models import Profile
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class SignUpView(SuccessMessageMixin, CreateView):
@@ -42,8 +44,34 @@ class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
     template_name = 'accounts/password_reset/new_password.html'
 
 
-class ProfileDetail(DetailView):
+class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Profile
     template_name = 'accounts/profile/view.html'
+    login_url = 'accounts:login'
+    queryset = User.objects.all()
+
+    def get(self, request, user_id):
+        """Renders a page to show a specific note in full detail.
+           Parameters:
+           user_id(int): pk of the User object requesting the page
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page of the Profile information
+
+        """
+        user = self.queryset.get(id=user_id)
+        profile = user.profile
+        context = {
+            'profile': profile
+        }
+        return render(request, self.template_name, context)
+
+    def test_func(self):
+        '''Ensures that users can only view their own Profiles.'''
+        return True
+        # user = self.request.user
+        # return (self.request.user == profile.user)
 
 
 class ProfileUpdate(UpdateView):

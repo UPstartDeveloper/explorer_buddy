@@ -26,28 +26,3 @@ class ExplorerSignUpForm(UserCreationForm):
             user.save()
 
         return user
-
-
-"""
-class ExplorerSignUpForm(forms.Form):
-    username = forms.CharField(label='Enter Username', min_length=3,
-                               max_length=150)
-    email = forms.EmailField(label='Enter email')
-    password1 = forms.CharField(label='Enter password',
-                                widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password',
-                                widget=forms.PasswordInput)
-
-    def clean_username(self):
-        '''Validate if the user input is an acceptable username.'''
-        username = self.cleaned_data['username']
-        # make sure there is not already a user with this username
-        same_username = User.objects.filter(username=username)
-        if same_username.count() is not 0:
-            raise ValidationError("Username already exists")
-        else:
-            return username
-
-    def clean_email(self):
-        '''Make sure that there is not already another User with is email.'''
-"""

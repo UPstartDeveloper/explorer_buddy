@@ -17,7 +17,7 @@
                 <!-- is user is signed in, they can CRUD their notes, log out, or see account info -->
                 {% if user.is_authenticated %}
                     <li>
-                        <a class="btn btn-info" href="{% url 'accounts:user_info' user.username %}">My Account</a>
+                        <a class="btn btn-info" href="{% url 'accounts:user_info' user.id %}">My Account</a>
                     </li>
                     <li>
                         <a class="btn btn-success ml-2" href="{% url 'notes:create_note_form' %}">New Note</a>

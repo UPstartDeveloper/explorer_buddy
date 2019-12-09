@@ -15,6 +15,7 @@ from django.http import HttpResponseRedirect
 from accounts.models import Profile
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from accounts.forms import ProfileForm
 
 
 class SignUpView(SuccessMessageMixin, CreateView):
@@ -73,8 +74,21 @@ class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return (self.request.user.profile == user.profile)
 
 
-class ProfileUpdate(UpdateView):
-    template_name = 'accounts/profile/edit.html'
+class ProfilePictureUpdate(UpdateView):
+    template_name = 'accounts/profile/edit_image.html'
+    form_class = ProfileForm
+    queryset = User.objects.all()
+    login_url = 'accounts:login'
+
+    def test_func(self):
+        '''Checks that the user updating the profile image is its user.'''
+        note = self.get_object()
+        return (self.request.user.profile == user.profile)
+
+    def form_valid(self, form):
+        '''Changes the image (if there is a new uploadd) of the Note.'''
+        form.instance.media = self.request.FILES.get('media')
+        return super().form_valid(form)
 
 
 class ProfileDelete(DeleteView):

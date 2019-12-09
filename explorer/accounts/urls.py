@@ -7,7 +7,7 @@ from accounts.views import (
     PasswordResetView,
     SignUpView,
     ProfileDetail,
-    ProfileUpdate,
+    ProfilePictureUpdate,
     ProfileDelete)
 
 
@@ -23,6 +23,8 @@ urlpatterns = [
          auth_views.LogoutView.as_view(), name='logout'),
     # views to see/change account info
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='user_info'),
+    path('<int:pk>/profile-picture/', ProfilePictureUpdate.as_view(),
+         name='change_image'),
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),

@@ -82,7 +82,7 @@ class ProfilePictureUpdate(UpdateView):
 
     def test_func(self):
         '''Checks that the user updating the profile image is its user.'''
-        note = self.get_object()
+        user = self.get_object()
         return (self.request.user.profile == user.profile)
 
     def form_valid(self, form):

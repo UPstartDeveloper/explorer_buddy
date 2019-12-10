@@ -31,46 +31,51 @@
                 <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
-                    <span class="brandmark">Hello,<br>{{ user.username }}!</span>
+                    <span class="brandmark"><p>Hello,<br>{{ user.username }}!</p></span>
                 </a>
                 {% else %}
                 <div class="nav-item navbar-brand d-flex w-50 mr-auto">
                     <img class="img-circle " src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
-                    <span class="brandmark text-white">Explorer<br>Buddy</span>
+                    <span class="brandmark text-white"><p>Explorer<br>Buddy</p></span>
                 </div>
                 {% endif %}
             </li>
-            <br>
+            <!--<br>-->
             <!-- is user is signed in, they can CRUD their notes, and log out -->
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
+                    <br><br>
                 </li>
-                <br>
+                <!--<br>-->
                 {% for note in notes %}
                     <li class="nav-item">
                         <a class="note-links" href="{% url 'notes:notes-detail-page' note.slug %}">{{ note.title}}</a>
                     </li>
-                    <br>
+                    <!--<br>-->
                 {% endfor %}
                 <li class="nav-item">
+                    <br>
                     <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
+                    <br><br>
                 </li>
                 <!-- Otherwise, the user can only login or signup -->
             {% else %}
                 <li class="nav-item">
                     <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
+                    <br><br>
                 </li>
-                <br>
+                <!--<br>-->
                 <li class="nav-item">
                     <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
+                    <br><br>
                 </li>
             {% endif %}
-            <br>
+            <!--<br>-->
             <!-- Copyright at bottom of sidenav -->
             <li class="text-white">
-                &copy 2019 Live to Discover Inc.
+                <p>&copy 2019 Live to Discover Inc.</p>
             </li>
         </ul>
     </div>

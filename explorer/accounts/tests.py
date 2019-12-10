@@ -82,8 +82,11 @@ class SideNavbarTests(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
-        '''Instantiate needed tools to run tests.'''
-        pass
+        '''Instantiate needed tools to run tests. Use Heroku as server.'''
+        self.live_server_url = 'https://explorer-buddy.herokuapp.com'
+        super().setUpClass()
+        cls.selenium = WebDriver()
+        cls.selenium.implicitly_wait(10)
 
     @classmethod
     def tearDownClass(cls):

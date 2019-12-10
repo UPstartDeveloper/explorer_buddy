@@ -91,7 +91,8 @@ class SideNavbarTests(LiveServerTestCase):
     @classmethod
     def tearDownClass(cls):
         '''Deconstruct tools used during tests.'''
-        pass
+        cls.selenium.quit()
+        super().tearDownClass()
 
     def test_sidebar_on_safari(self):
         '''The login page displays the navbar down the side of the page.'''

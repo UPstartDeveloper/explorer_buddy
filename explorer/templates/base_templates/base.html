@@ -45,6 +45,7 @@
             <!-- is user is signed in, they can CRUD their notes, and log out -->
             {% if user.is_authenticated %}
                 <li class="nav-item">
+                    <br>
                     <a href="{% url 'notes:create_note_form' %}"><button class="btn btn-success">New Note</button></a>
                     <br><br>
                 </li>
@@ -63,6 +64,7 @@
                 <!-- Otherwise, the user can only login or signup -->
             {% else %}
                 <li class="nav-item">
+                    <br>
                     <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
                     <br><br>
                 </li>

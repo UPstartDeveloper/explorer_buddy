@@ -41,6 +41,7 @@ class NoteDetailViewTests(TestCase):
         self.user = User.objects.create(username='Zain',
                                         email='zain_14@icloud.com',
                                         password='bismillah')
+        self.factory = RequestFactory()
 
     def test_get_details_for_one_note(self):
         """The details included for a specific note are accurate
@@ -52,16 +53,18 @@ class NoteDetailViewTests(TestCase):
                                    content='Why do frogs eat flies?',
                                    author=self.user,
                                    media=None)
+        self.assertEqual(note.slug, 'frogs')
 
         # GET the details of the object
-        response = self.client.get('/notes/frogs/')
+        get_request = self.factory.get('/notes/frogs')
+        get_request.user = self.user
+        response = NoteDetail.as_view()(get_request, note.slug)
         # test the data that renders
-        rendered_note = response.context['note']
-        self.assertEqual(type(rendered_note), Note)
+        self.assertEqual(len(Note.objects.filter(title="Frogs")), 1)
 
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, 'Frogs')
 
         inserted_note = Note.objects.get(title='Frogs')
-        self.assertEqual(rendered_note.created, inserted_note.created)
+        self.assertEqual(note.created, inserted_note.created)

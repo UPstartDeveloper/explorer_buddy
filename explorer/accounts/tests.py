@@ -1,9 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, LiveServerTestCase
 from accounts.views import SignUpView, PasswordResetView
 from django.contrib.auth.models import User, AnonymousUser
 from django.test.client import RequestFactory
 from django.core import mail
 from django.urls import reverse, reverse_lazy
+from selenium.webdriver.safari.webdriver import WebDriver
 
 
 class SignUpViewTests(TestCase):
@@ -73,3 +74,22 @@ class PasswordResetViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         # an email is sent to the user
         self.assertEqual(len(mail.outbox), 1)
+
+
+class SideNavbarTests(LiveServerTestCase):
+    '''Tests that the side navbar takes the entire height of the viewport.'''
+    fixtures = ['user-data.json']
+
+    @classmethod
+    def setUpClass(cls):
+        '''Instantiate needed tools to run tests.'''
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        '''Deconstruct tools used during tests.'''
+        pass
+
+    def test_sidebar_on_safari(self):
+        '''The login page displays the navbar down the side of the page.'''
+        pass

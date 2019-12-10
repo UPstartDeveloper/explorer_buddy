@@ -31,13 +31,13 @@
                 <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
                     <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
-                    <span class="brandmark"><p>Hello,<br>{{ user.username }}!</p></span>
+                    <span class="brandmark">Hello,<br>{{ user.username }}!</span>
                 </a>
                 {% else %}
                 <div class="nav-item navbar-brand d-flex w-50 mr-auto">
                     <img class="img-circle " src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
                     <!-- user sees their name if signed in -->
-                    <span class="brandmark text-white"><p>Explorer<br>Buddy</p></span>
+                    <span class="brandmark text-white">Explorer<br>Buddy</span>
                 </div>
                 {% endif %}
             </li>
@@ -75,7 +75,7 @@
             <!--<br>-->
             <!-- Copyright at bottom of sidenav -->
             <li class="text-white">
-                <p>&copy 2019 Live to Discover Inc.</p>
+                <p>&copy; 2019 Live to Discover Inc.</p>
             </li>
         </ul>
     </div>

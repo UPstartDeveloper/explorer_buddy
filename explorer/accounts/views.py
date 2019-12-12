@@ -17,6 +17,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from accounts.forms import ProfileForm
 from django.urls import reverse
+from django.utils.datastructures import MultiValueDict
 
 
 class SignUpView(SuccessMessageMixin, CreateView):
@@ -93,7 +94,13 @@ class ProfilePictureUpdate(UpdateView):
 
     def form_valid(self, form):
         '''Changes the image of the user's profile.'''
-        form.instance.profile.mugshot = self.request.FILES.get('mugshot')
+        uploaded_image = self.request.FILES.get('mugshot')
+        if uploaded_image is not None:
+            form.instance.profile.mugshot = uploaded_image
+        else:
+            # if the user submits without uploading, then no change
+            current_image = form.instance.profile.mugshot
+            form.instance.profile.mugshot = current_image
         form.instance.profile.save()
         return super().form_valid(form)
 

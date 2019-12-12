@@ -88,7 +88,9 @@ If you are writing tests for the `api` package, you may also like to consult the
 - Gmail - email server
 
 ## Authors
-- **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration
+1. **Zain Raza** - *Initial work* - Make School Student, Data Science Concentration
+    * Want to see more? Take a peek at Zain's entire portfolio, at [https://www.makeschool.com/portfolio/Syed-Raza](https://www.makeschool.com/portfolio/Syed-Raza).
+
 
 ## License
 This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for more details.

@@ -14,7 +14,7 @@ class Note(models.Model):
     title = models.CharField(max_length=settings.NOTE_TITLE_MAX_LENGTH,
                              unique=True,
                              help_text="Give your note a title to remember.")
-    author = models.ForeignKey(User, on_delete=models.PROTECT,
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL,
                                help_text="The explorer making this log.")
     slug = models.CharField(max_length=settings.NOTE_TITLE_MAX_LENGTH,
                             blank=True, editable=False,

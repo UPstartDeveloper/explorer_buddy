@@ -189,6 +189,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # used to create a remote database
 db_from_env = dj_database_url.config()
-DATABASES[‘default’].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())

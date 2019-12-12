@@ -14,6 +14,7 @@ import os
 from dotenv import load_dotenv
 import django_heroku
 from django.urls import reverse
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -185,5 +186,9 @@ AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# used to create a remote database
+db_from_env = dj_database_url.config()
+DATABASES[‘default’].update(db_from_env)
 
 django_heroku.settings(locals())

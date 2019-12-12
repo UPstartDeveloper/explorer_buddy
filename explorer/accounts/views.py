@@ -29,7 +29,8 @@ class SignUpView(SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         '''Save the new User, and a new Profile for them, in the database.'''
         self.object = form.save()
-        Profile.objects.create(user=self.object)
+        profile = Profile.objects.create(user=self.object)
+        profile.save()
         return super().form_valid(form)
 
 

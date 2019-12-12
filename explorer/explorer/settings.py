@@ -96,8 +96,12 @@ WSGI_APPLICATION = 'explorer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'explorer_buddy',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'postgres',
+        'PASSWORD': 'explorer_buddy',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -190,5 +194,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # used to create a remote database
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+
 
 django_heroku.settings(locals())

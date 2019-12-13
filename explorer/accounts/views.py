@@ -48,14 +48,15 @@ class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
     template_name = 'accounts/password_reset/new_password.html'
 
 
-class PasswordChangeStartView(auth_views.PasswordChangeView):
+class PasswordChangeStartView(SuccessMessageMixin,
+                              auth_views.PasswordChangeView):
     '''Present a form to enter a new password for the authenticated user.'''
     template_name = 'accounts/password_change/password_change_form.html'
     success_url = reverse_lazy('accounts:password_change_done')
+    success_message = 'Your password was changed successfully!'
 
 
-class PasswordChangeComplete(SuccessMessageMixin,
-                             auth_views.PasswordChangeDoneView):
+class PasswordChangeComplete(auth_views.PasswordChangeDoneView):
     template_name = 'accounts/profile/view.html'
     success_message = 'Your password was changed successfully!'
 

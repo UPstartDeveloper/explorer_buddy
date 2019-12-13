@@ -113,5 +113,17 @@ class ProfilePictureUpdate(UpdateView):
         return super().form_valid(form)
 
 
+class UserInfoUpdate(UpdateView):
+    template_name = 'accounts/profile/edit_info.html'
+    model = User
+    fields = ['username', 'email', 'first_name', 'last_name']
+    queryset = User.objects.all()
+
+    def get_success_url(self):
+        '''Redirect to the profile page of the User.'''
+        url = self.object.profile.get_absolute_url()
+        return url
+
+
 class ProfileDelete(DeleteView):
     template_name = 'accounts/profile/delete.html'

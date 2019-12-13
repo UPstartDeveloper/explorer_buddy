@@ -10,7 +10,8 @@ from accounts.views import (
     ProfilePictureUpdate,
     ProfileDelete,
     PasswordChangeStartView,
-    PasswordChangeComplete)
+    PasswordChangeComplete,
+    UserInfoUpdate)
 
 
 app_name = 'accounts'
@@ -23,10 +24,13 @@ urlpatterns = [
          name='login'),
     path('logout/',
          auth_views.LogoutView.as_view(), name='logout'),
+
     # views to see/change account info
     path('<int:pk>/profile/', ProfileDetail.as_view(), name='user_info'),
     path('<int:pk>/profile-picture/', ProfilePictureUpdate.as_view(),
          name='change_image'),
+    path('<int:pk>/user-info/', UserInfoUpdate.as_view(), name='change_info'),
+
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),
          name='password_reset'),
@@ -42,7 +46,8 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
                     template_name='accounts/password_reset/complete.html'),
          name='password_reset_complete'),
-    # chnaging the password
+
+    # changing the password
     path('password-change/', PasswordChangeStartView.as_view(),
          name='password_change'),
     path('password-change/done/', PasswordChangeComplete.as_view(),

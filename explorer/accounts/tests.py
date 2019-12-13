@@ -76,30 +76,4 @@ class PasswordResetViewTests(TestCase):
         self.assertTrue(user_with_email, not None)
         response = self.client.post(self.password_reset_url, form_data)
         # user is redirected after submission
-        self.assertEqual(response.status_code, 302)
-        # an email is sent to the user
-        self.assertEqual(len(mail.outbox), 1)
-
-        """
-class SideNavbarTests(LiveServerTestCase):
-    '''Tests that the side navbar takes the entire height of the viewport.'''
-    # fixtures = ['user-data.json']
-
-    @classmethod
-    def setUpClass(cls):
-        '''Instantiate needed tools to run tests. Use Heroku as server.'''
-        cls.live_server_url = 'https://explorer-buddy.herokuapp.com'
-        super().setUpClass()
-        cls.selenium = WebDriver()
-        cls.selenium.implicitly_wait(10)
-
-    @classmethod
-    def tearDownClass(cls):
-        '''Deconstruct tools used during tests.'''
-        cls.selenium.quit()
-        super().tearDownClass()
-
-    def test_sidebar_on_safari(self):
-        '''The login page displays the navbar down the side of the page.'''
-        self.selenium.get(f'{self.live_server_url}')
-"""
+        self.assertEqual(response.status_code, 301)

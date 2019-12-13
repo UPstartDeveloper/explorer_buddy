@@ -1,0 +1,21 @@
+{% extends "base_templates/base_for_index.html" %}
+{% load static %}
+
+<!-- Uses top navbar -->
+{% block navbar %}
+    {% include "partials/top-nav.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Change Your Information</h2>
+    <br><br>
+    {% include 'partials/view_form.html' %}
+
+    <!-- Cancel editing -->
+    <a class="btn btn-info" href="{% url 'accounts:user_info' user.id %}">Cancel Changes</a>
+</div>
+
+
+{% endblock %}

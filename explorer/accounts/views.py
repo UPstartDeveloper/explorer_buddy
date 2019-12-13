@@ -100,6 +100,11 @@ class ProfilePictureUpdate(UpdateView):
         url = self.object.profile.get_absolute_url()
         return url
 
+    def leave_mugshot_unchanged(self, form):
+        '''Leave the mugshot field as its current value.'''
+        current_image = form.instance.profile.mugshot
+        form.instance.profile.mugshot = current_image
+
     def form_valid(self, form):
         '''Changes the image of the user's profile.'''
         uploaded_image = self.request.FILES.get('mugshot')
@@ -107,8 +112,7 @@ class ProfilePictureUpdate(UpdateView):
             form.instance.profile.mugshot = uploaded_image
         else:
             # if the user submits without uploading, then no change
-            current_image = form.instance.profile.mugshot
-            form.instance.profile.mugshot = current_image
+            self.leave_mugshot_unchanged(form)
         form.instance.profile.save()
         return super().form_valid(form)
 

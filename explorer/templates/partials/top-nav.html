@@ -5,7 +5,11 @@
         <div class="navbar-brand d-flex w-50 mr-auto">
             <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
             <!-- brand name -->
-            <span class="brandmark text-white"><h3>Explorer Buddy</h3></span>
+            <span class="brandmark text-white">
+                <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+                    <h3>Explorer Buddy</h3>
+                </a>
+            </span>
         </div>
         <!-- smaller button for smaller viewports -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">

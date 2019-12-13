@@ -71,10 +71,9 @@
                 <!--<br>-->
                 <li class="nav-item">
                     <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
-                    <br><br>
+                    <br><br><br>
                 </li>
             {% endif %}
-            <!--<br>-->
             <!-- Copyright at bottom of sidenav -->
             <li class="text-white">
                 <p>&copy; 2019 Live to Discover Inc.</p>
@@ -84,13 +83,13 @@
 
     {% endblock %}
 
-        <div class="container col-md-auto">
+    <div class="container col-md-auto">
 
             {% block content %}
             {% endblock %}
 
-        </div>
-    <!--</div>-->
+    </div>
+
 
 </body>
 </html>

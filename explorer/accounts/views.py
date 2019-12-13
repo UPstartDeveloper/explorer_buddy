@@ -95,11 +95,6 @@ class ProfilePictureUpdate(UpdateView):
     form_class = ProfileForm
     queryset = User.objects.all()
 
-    def test_func(self):
-        '''Checks that the user updating the profile image is its user.'''
-        user = self.get_object()
-        return (self.request.user.profile == user.profile)
-
     def get_success_url(self):
         '''Redirect to the profile page of the User.'''
         url = self.object.profile.get_absolute_url()

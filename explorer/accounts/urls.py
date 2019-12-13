@@ -8,7 +8,9 @@ from accounts.views import (
     SignUpView,
     ProfileDetail,
     ProfilePictureUpdate,
-    ProfileDelete)
+    ProfileDelete,
+    PasswordChangeStartView,
+    PasswordChangeComplete)
 
 
 app_name = 'accounts'
@@ -41,7 +43,8 @@ urlpatterns = [
                     template_name='accounts/password_reset/complete.html'),
          name='password_reset_complete'),
     # chnaging the password
-    path('password-change/', auth_views.PasswordChangeView.as_view(
-         template_name='accounts/password_change/password_change_form.html'),
+    path('password-change/', PasswordChangeStartView.as_view(),
          name='password_change'),
+    path('password-change/done/', PasswordChangeComplete.as_view(),
+         name='password_change_done'),
 ]

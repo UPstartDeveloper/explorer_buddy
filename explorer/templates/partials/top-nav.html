@@ -2,42 +2,42 @@
 
 <nav id="top-nav" class="navbar navbar-expand-md">
     <!-- Brandmark -->
-        <div class="navbar-brand d-flex w-50 mr-auto">
-            <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
-            <!-- brand name -->
-            <span class="brandmark text-white">
-                <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
-                    <h3>Explorer Buddy</h3>
-                </a>
-            </span>
-        </div>
-        <!-- smaller button for smaller viewports -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon text-white mr-3">Options</span>
-            </button>
-        <!-- options for user -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-             <ul class="list-group list-group-horizontal justify-content-end ml-auto">
-                <!-- is user is signed in, they can CRUD their notes, log out, or see account info -->
-                {% if user.is_authenticated %}
-                    <li>
-                        <a class="btn btn-info" href="{% url 'accounts:user_info' user.id %}">My Account</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-success ml-2" href="{% url 'notes:create_note_form' %}">New Note</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
-                    </li>
-                <!-- Otherwise, the user can only login or signup -->
-                {% else %}
-                    <li>
-                        <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
+    <div class="navbar-brand d-flex w-50 mr-auto">
+        <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
+        <!-- brand name -->
+        <span class="brandmark text-white">
+            <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+                <h3>Explorer Buddy</h3>
+            </a>
+        </span>
+    </div>
+    <!-- smaller button for smaller viewports -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white mr-3">Options</span>
+        </button>
+    <!-- options for user -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="list-group list-group-horizontal justify-content-end ml-auto">
+            <!-- is user is signed in, they can CRUD their notes, log out, or see account info -->
+            {% if user.is_authenticated %}
+                <li>
+                    <a class="btn btn-info" href="{% url 'accounts:user_info' user.id %}">My Account</a>
+                </li>
+                <li>
+                    <a class="btn btn-success ml-2" href="{% url 'notes:create_note_form' %}">New Note</a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-danger ml-2">Log Out</a>
+                </li>
+            <!-- Otherwise, the user can only login or signup -->
+            {% else %}
+                <li>
+                    <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2">Sign Up!</a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:login' %}" class="btn btn-secondary bg-info ml-2">Log In</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
 </nav>

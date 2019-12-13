@@ -52,9 +52,10 @@ ul, ol, li {
 }
 
 /* Credit for these CSS properties goes to: https://stackoverflow.com/questions/11555931/make-footer-stick-to-bottom-of-page-using-twitter-bootstrap */
-.footer {
+.container .footer {
   bottom: -50px;
   position: absolute;
   right: 0px;
   left: 0px;
+  width: 100%;
 }

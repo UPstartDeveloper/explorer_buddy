@@ -4,7 +4,7 @@ _**NOTE**: Must score higher than a **`70%`** to pass._
 
 ## Project Requirements
 
-| Criteria                                   | Possible  |  Earned  | ☑ Done ️ |
+| Criteria                                   | Possible  |  Earned  | ☑ Done ️  |
 | ------------------------------------------ | :-------: | :------: | :------: |
 | At least 2 apps in project                 |   `40`    |   `00`   |    ☑     |
 | At least 2 tests in `tests.py` in each app |   `30`    |   `00`   |    ☑     |
@@ -18,4 +18,4 @@ _**NOTE**: Must score higher than a **`70%`** to pass._
 | `README` with documentation                |   `10`    |   `00`   |    ☑     |
 | Public GitHub repo                         |    `5`    |   `00`   |    ☑     |
 | No exposed secrets                         |    `5`    |   `00`   |    ☑     |
-| **TOTAL**                                  | **`275`** | **`00`** |          |
+| **TOTAL**                                  | **`235`** | **`00`** |          |

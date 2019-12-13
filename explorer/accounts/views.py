@@ -61,7 +61,7 @@ class PasswordChangeComplete(auth_views.PasswordChangeDoneView):
     success_message = 'Your password was changed successfully!'
 
 
-class ProfileDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class ProfileDetail(DetailView):
     model = Profile
     template_name = 'accounts/profile/view.html'
     login_url = 'accounts:login'

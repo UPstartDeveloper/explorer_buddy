@@ -14,7 +14,7 @@ from notes.forms import NoteForm
 import explorer
 
 
-class NoteList(LoginRequiredMixin, ListView):
+class NoteList(ListView):
     '''Renders a list of all Notes.'''
     model = Note
     template_name = 'notes/notebook.html'
@@ -28,7 +28,7 @@ class NoteList(LoginRequiredMixin, ListView):
         })
 
 
-class NoteDetail(LoginRequiredMixin, DetailView):
+class NoteDetail(DetailView):
     '''Display the information currently on one Note.'''
     model = Note
     template_name = 'notes/one_note.html'
@@ -53,7 +53,7 @@ class NoteDetail(LoginRequiredMixin, DetailView):
         return render(request, self.template_name, context)
 
 
-class NoteCreate(LoginRequiredMixin, CreateView):
+class NoteCreate(CreateView):
     '''Submit a form to create new note.'''
     model = Note
     form_class = NoteForm
@@ -88,7 +88,7 @@ class NoteCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class NoteUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class NoteUpdate(UpdateView):
     '''Submit a form to edit a note.'''
     model = Note
     form_class = NoteForm
@@ -127,7 +127,7 @@ class NoteUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
 
-class NoteDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class NoteDelete(DeleteView):
     '''User is able to delete a Note.'''
     model = Note
     template_name = 'notes/note_confirm_delete.html'

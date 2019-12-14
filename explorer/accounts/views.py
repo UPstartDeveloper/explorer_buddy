@@ -129,5 +129,25 @@ class UserInfoUpdate(UpdateView):
         return url
 
 
-class ProfileDelete(DeleteView):
+class UserDelete(DeleteView):
+    model = User
     template_name = 'accounts/profile/delete.html'
+    success_url = reverse_lazy('accounts:login')
+    queryset = User.objects.all()
+
+    def get(self, request, pk):
+        """Renders a page to delete the account of the user.
+           Parameters:
+           user_id(int): pk of the User object requesting the page
+           request(HttpRequest): the HTTP request sent to the server
+
+           Returns:
+           render: a page to confirm the delete
+
+        """
+        user = self.queryset.get(id=pk)
+        profile = user.profile
+        context = {
+            'profile': profile
+        }
+        return render(request, self.template_name, context)

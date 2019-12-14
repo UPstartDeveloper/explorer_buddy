@@ -49,6 +49,7 @@
                     <!-- Button to update User information -->
                     <a class="btn btn-info" href="{% url 'accounts:change_info' user.id %}">Change Account Info</a>
                     <!-- Button to delete account -->
+                    <a class="btn btn-danger" href="{% url 'accounts:delete_user' user.id %}">Delete Account</a>
                 </div>
             </div>
             <div class="col-md-6">

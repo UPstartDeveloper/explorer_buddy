@@ -8,7 +8,7 @@ from accounts.views import (
     SignUpView,
     ProfileDetail,
     ProfilePictureUpdate,
-    ProfileDelete,
+    UserDelete,
     PasswordChangeStartView,
     PasswordChangeComplete,
     UserInfoUpdate)
@@ -30,6 +30,7 @@ urlpatterns = [
     path('<int:pk>/profile-picture/', ProfilePictureUpdate.as_view(),
          name='change_image'),
     path('<int:pk>/user-info/', UserInfoUpdate.as_view(), name='change_info'),
+    path('<int:pk>/user-delete/', UserDelete.as_view(), name='delete_user'),
 
     # views for resetting the password
     path('password-reset/', PasswordResetView.as_view(),

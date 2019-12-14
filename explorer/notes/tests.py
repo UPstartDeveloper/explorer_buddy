@@ -72,9 +72,29 @@ class NoteDetailViewTests(TestCase):
 
 class NoteUpdateTests(TestCase):
     '''A user can change the fields for a specific Note.'''
-    pass
+    def setUp(self):
+        '''Instaniate User for required author field in Note objects.'''
+        self.user = User.objects.create(username='Zain',
+                                        email='zain_14@icloud.com',
+                                        password='bismillah')
+        self.factory = RequestFactory()
+        self.note = Note.objects.create(title='Frogs',
+                                        content='Why do frogs eat flies?',
+                                        author=self.user,
+                                        media=None)
+        self.note.save()
 
 
 class NoteDeletionTests(TestCase):
     '''A user can delete a Note.'''
-    pass
+    def setUp(self):
+        '''Instaniate User for required author field in Note objects.'''
+        self.user = User.objects.create(username='Zain',
+                                        email='zain_14@icloud.com',
+                                        password='bismillah')
+        self.factory = RequestFactory()
+        self.note = Note.objects.create(title='Frogs',
+                                        content='Why do frogs eat flies?',
+                                        author=self.user,
+                                        media=None)
+        self.note.save()

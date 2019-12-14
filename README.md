@@ -21,7 +21,9 @@ benefit from Explorer Buddy.
 (Docker should work as well, I've just never used it before)
 - WARNING: Due to the use of the `sslserver` package, this project doesn't run locally with the usual
   `python3 manage.py runserver`. Please instead use the command `python3 manage.py runsslserver`,
-  and be sure to explictly tell your browser to explicitly trust the HTTPS certificate. Usually, this is found in the 'Advanced' section of the browser settings (however each browser may be slightly different).
+  and be sure to explictly tell your browser to explicitly trust the HTTPS certificate. Usually, this
+  is found in the 'Advanced' section of the browser settings (however each browser may be slightly
+      different).
 
 ### How to Contribute To This Project:
 These instructions will help you get a copy of the repository up and running on your local machine.

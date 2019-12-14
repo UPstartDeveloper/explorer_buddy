@@ -2,8 +2,8 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from notes.models import Note
-from django.urls import reverse
-from notes.views import NoteCreate, NoteDetail
+from django.urls import reverse, reverse_lazy
+from notes.views import NoteCreate, NoteDetail, NoteUpdate, NoteDelete
 
 
 class NoteCreateTests(TestCase):
@@ -32,6 +32,7 @@ class NoteCreateTests(TestCase):
         # test that the database contains the new Page
         note = Note.objects.last()
         self.assertEqual(note.title, 'Frogs')
+        self.assertEqual(note.slug, 'frogs')
 
 
 class NoteDetailViewTests(TestCase):
@@ -78,11 +79,20 @@ class NoteUpdateTests(TestCase):
                                         email='zain_14@icloud.com',
                                         password='bismillah')
         self.factory = RequestFactory()
-        self.note = Note.objects.create(title='Frogs',
-                                        content='Why do frogs eat flies?',
-                                        author=self.user,
-                                        media=None)
-        self.note.save()
+
+    def test_get_update_form(self):
+        '''A user sees the edit form prepopulated with the current data.'''
+        # add a Note, make sure it's slug is generated
+        note = Note.objects.create(title='Frogs',
+                                   content='Why do frogs eat flies?',
+                                   author=self.user,
+                                   media=None)
+        self.assertEqual(note.slug, 'frogs')
+        # the user can see the page using the slug of the Note in the URL
+        get_request = self.factory.get('/notes/frogs/edit/')
+        get_request.user = self.user
+        response = NoteUpdate.as_view()(get_request, note.slug)
+        self.assertEqual(response.status_code, 200)
 
 
 class NoteDeletionTests(TestCase):

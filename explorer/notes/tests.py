@@ -68,3 +68,13 @@ class NoteDetailViewTests(TestCase):
 
         inserted_note = Note.objects.get(title='Frogs')
         self.assertEqual(note.created, inserted_note.created)
+
+
+class NoteUpdateTests(TestCase):
+    '''A user can change the fields for a specific Note.'''
+    pass
+
+
+class NoteDeletionTests(TestCase):
+    '''A user can delete a Note.'''
+    pass

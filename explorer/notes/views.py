@@ -158,3 +158,11 @@ class NoteDelete(DeleteView):
         '''Checks that the user deleting the note is its author.'''
         note = self.get_object()
         return (self.request.user == note.author)
+
+
+def post_on_medium(self, request, *args, **kwargs):
+    """Integrates with the Medium API, to allow users to post their Note
+       content on their Medium account.
+
+    """
+    pass

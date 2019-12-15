@@ -91,7 +91,7 @@ class NoteUpdateTests(TestCase):
         # the user can see the page using the slug of the Note in the URL
         get_request = self.factory.get('/notes/frogs/edit/')
         get_request.user = self.user
-        response = NoteUpdate.as_view()(get_request, note.slug)
+        response = NoteUpdate.as_view()(get_request, slug=note.slug)
         self.assertEqual(response.status_code, 200)
 
 

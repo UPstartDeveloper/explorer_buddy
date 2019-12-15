@@ -123,6 +123,7 @@ class NoteUpdate(UpdateView):
 
     def form_valid(self, form):
         '''Changes the image (if there is a new uploadd) of the Note.'''
+        print(f'Form looks like this: {form}')
         form.instance.media = self.request.FILES.get('media')
         return super().form_valid(form)
 

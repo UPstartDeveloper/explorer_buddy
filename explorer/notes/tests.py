@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from notes.models import Note
 from django.urls import reverse, reverse_lazy
 from notes.views import NoteCreate, NoteDetail, NoteUpdate, NoteDelete
+from django.shortcuts import render
 
 
 class NoteCreateTests(TestCase):
@@ -95,8 +96,8 @@ class NoteUpdateTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Frogs')
 
-    def test_edit_note_makes_changes(self):
-        '''After a valid form submission, the note data changes.'''
+    def test_edit_note_redirect(self):
+        '''After a valid form submission, the user is redirected.'''
         previous_content = self.note.content
         # user enters data they want to replace current Note data
         new_content = "What makes a frog's tongue so sticky?"
@@ -104,7 +105,7 @@ class NoteUpdateTests(TestCase):
             'content': new_content
         }
         # user submits the form
-        post_request = self.factory.post('notes:note_edit_form', form_data)
+        post_request = self.factory.post('/notes/frogs/edit/', form_data)
         post_request.user = self.user
         response = NoteUpdate.as_view()(post_request, slug=self.note.slug)
         # the data in the field of the corresponding Note changes
@@ -125,6 +126,13 @@ class NoteDeletionTests(TestCase):
                                         author=self.user,
                                         media=None)
         self.note.save()
+
+    def test_get_delete_page(self):
+        '''A user is able to see a page asking them to confirm deletion.'''
+        get_request = self.factory.get('notes:delete_note')
+        get_request.user = self.user
+        response = NoteDelete.as_view()(get_request, slug=self.note.slug)
+        self.assertEqual(response.status_code, 200)
 
 
 class NoteListTests(TestCase):

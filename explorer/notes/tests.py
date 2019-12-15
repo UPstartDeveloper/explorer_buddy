@@ -79,21 +79,24 @@ class NoteUpdateTests(TestCase):
                                         email='zain_14@icloud.com',
                                         password='bismillah')
         self.factory = RequestFactory()
+        self.note = Note.objects.create(title='Frogs',
+                                        content='Why do frogs eat flies?',
+                                        author=self.user,
+                                        media=None)
 
     def test_get_update_form(self):
         '''A user sees the edit form prepopulated with the current data.'''
         # add a Note, make sure it's slug is generated
-        note = Note.objects.create(title='Frogs',
-                                   content='Why do frogs eat flies?',
-                                   author=self.user,
-                                   media=None)
-        self.assertEqual(note.slug, 'frogs')
+        self.assertEqual(self.note.slug, 'frogs')
         # the user can see the page using the slug of the Note in the URL
         get_request = self.factory.get('/notes/frogs/edit/')
         get_request.user = self.user
-        response = NoteUpdate.as_view()(get_request, slug=note.slug)
+        response = NoteUpdate.as_view()(get_request, slug=self.note.slug)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Frogs')
+
+    def test_edit_note_makes_changes(self):
+        '''After a valid form submission, the note data changes.'''
 
 
 class NoteDeletionTests(TestCase):

@@ -137,10 +137,13 @@ class NoteDeletionTests(TestCase):
     def test_note_deletion(self):
         '''A note is no longer in the database after it is deleted.'''
         # user makes a POST request at the confirm page
-
-        # user is redirected to the create forms
-
+        post_request = self.factory.post('notes:delete_note')
+        response = NoteDelete.as_view()(post_request, slug=self.note.slug)
+        # user is redirected
+        self.assertEqual(response.status_code, 302)
         # the deleted note is no longer in the database
+        queryset_of_deleted_note = Note.objects.get(title=self.note.title)
+        self.assertEqual(len(queryset_of_deleted_note), 0)
 
 
 class NoteListTests(TestCase):

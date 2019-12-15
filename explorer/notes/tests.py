@@ -97,6 +97,19 @@ class NoteUpdateTests(TestCase):
 
     def test_edit_note_makes_changes(self):
         '''After a valid form submission, the note data changes.'''
+        previous_content = self.note.content
+        # user enters data they want to replace current Note data
+        new_content = "What makes a frog's tongue so sticky?"
+        form_data = {
+            'content': new_content
+        }
+        # user submits the form
+        post_request = self.factory.post('notes:note_edit_form', form_data)
+        post_request.user = self.user
+        response = NoteUpdate.as_view()(post_request, slug=self.note.slug)
+        # the data in the field of the corresponding Note changes
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.note.content, new_content)
 
 
 class NoteDeletionTests(TestCase):

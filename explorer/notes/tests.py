@@ -93,6 +93,7 @@ class NoteUpdateTests(TestCase):
         get_request.user = self.user
         response = NoteUpdate.as_view()(get_request, slug=note.slug)
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Frogs')
 
 
 class NoteDeletionTests(TestCase):

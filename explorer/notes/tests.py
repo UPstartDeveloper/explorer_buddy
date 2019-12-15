@@ -125,3 +125,7 @@ class NoteDeletionTests(TestCase):
                                         author=self.user,
                                         media=None)
         self.note.save()
+
+
+class NoteListTests(TestCase):
+    pass

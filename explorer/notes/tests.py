@@ -3,7 +3,13 @@ from django.test.client import RequestFactory
 from django.contrib.auth.models import User
 from notes.models import Note
 from django.urls import reverse, reverse_lazy
-from notes.views import NoteCreate, NoteDetail, NoteUpdate, NoteDelete
+from notes.views import (
+    NoteCreate,
+    NoteDetail,
+    NoteUpdate,
+    NoteDelete,
+    NoteList
+)
 from django.shortcuts import render
 
 
@@ -147,4 +153,27 @@ class NoteDeletionTests(TestCase):
 
 
 class NoteListTests(TestCase):
-    pass
+    def setUp(self):
+        '''Instaniate User and Note objects.'''
+        self.user = User.objects.create(username='Zain',
+                                        email='zain_14@icloud.com',
+                                        password='bismillah')
+        self.factory = RequestFactory()
+
+    def test_get_list_page(self):
+        '''A user sees a page with all their notes together.'''
+        # the user has already made notes
+        first_note = Note.objects.create(title='Frogs',
+                                         content='Why do frogs eat flies?',
+                                         author=self.user,
+                                         media=None)
+        next_note = Note.objects.create(title='Storms',
+                                        content='Storms bring precipitation',
+                                        author=self.user,
+                                        media=None)
+        get_request = self.factory.get('notes:index')
+        # there are multiple notes displayed
+        response = NoteList.as_view()(get_request)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response.content, first_note.title)
+        self.assertContains(response.content, next_note.title)

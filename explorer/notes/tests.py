@@ -181,6 +181,8 @@ class NoteListTests(TestCase):
     def test_get_list_page_no_notes(self):
         '''User sees a message if they have no notes on record currently.'''
         get_request = self.factory.get('notes:index')
-        response = NotelList.as_view()(get_request)
+        get_request.user = self.user
+        response = NoteList.as_view()(get_request)
         self.assertContains(response.content, (
-            "You don't have any notes to display."))
+            "You don't have any notes to display."
+        ))

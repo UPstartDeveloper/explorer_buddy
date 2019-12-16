@@ -14,7 +14,7 @@ urlpatterns = ([
         path((
             'https://medium.com/m/oauth/authorize?' +
             'client_id={{clientId}}' +
-            '&scope=publishPost&state={{state}}' +
+            '&scope=basicProfile,publishPost&state={{state}}' +
             '&response_type=code&redirect_uri={{redirectUri}}'),
             post_on_medium, name='post-to-medium'
         ),

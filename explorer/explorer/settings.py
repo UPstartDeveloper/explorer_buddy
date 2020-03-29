@@ -198,9 +198,9 @@ DATABASES['default'].update(db_from_env)
 
 
 # added security for deployment
-SECURE_SSL_REDIRECT = os.getenv('SSL')
-SESSION_COOKIE_SECURE = os.getenv('COOKIES')
-CSRF_COOKIE_SECURE = os.getenv('CSRF')
+# SECURE_SSL_REDIRECT = os.getenv('SSL')
+# SESSION_COOKIE_SECURE = os.getenv('COOKIES')
+# CSRF_COOKIE_SECURE = os.getenv('CSRF')
 
 
 django_heroku.settings(locals())

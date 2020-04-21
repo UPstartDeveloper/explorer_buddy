@@ -1,27 +1,11 @@
-{% extends "base_templates/base.html" %}
-{% load static %}
-<!-- Uses side navbar -->
+{% extends "base.html" %}
+
 
 <!-- Page content -->
 {% block content %}
-    <!-- Info Page -->
-    <!-- copied form Bootswatch: https://bootswatch.com/litera/ -->
-    <div class="jumbotron">
-        <h1 class="display-3">Hello, World!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a href="{% url 'accounts:signup-form' %}" class="btn btn-secondary bg-success ml-2 btn-lg">Sign Up!</a>
-        </p>
-        <img src="{% static 'images/forest.jpg' %}" alt="Forest image" height=500px width=500px>
-    </div>
-
-
-    <br>
 
     <!-- Log in Section -->
-    <h3>Log In <small class="text-muted">to track your discoveries, Explorer!</small></h3>
+    <h3>Log In <small class="text-muted">and Start Sharing Your discoveries!</small></h3>
     <hr>
     <div class="row">
         <div class="col">

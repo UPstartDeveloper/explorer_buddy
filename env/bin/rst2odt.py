@@ -1,4 +1,4 @@
-#!/Users/zainraza/Documents/dev/courses/explorer_buddy/env/bin/python3
+#!/Users/zainraza/Downloads/dev/courses/Year_1_Term1_3/explorer_buddy/env/bin/python
 
 # $Id: rst2odt.py 5839 2009-01-07 19:09:28Z dkuhlman $
 # Author: Dave Kuhlman <dkuhlman@rexx.com>

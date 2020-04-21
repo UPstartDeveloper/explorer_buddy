@@ -1,4 +1,5 @@
 # Explorer Buddy
+![Logo picture](https://i.postimg.cc/FRwBp7pc/Screen-Shot-2020-04-21-at-2-13-01-PM.png)
 #### [See it Now (link to deployed version)](https://explorer-buddy.herokuapp.com/)
 They say we have more information available us today than ever before - but does that make us more knowledgeable?
 Learning is about asking questions, not just looking up answers others have found for you.

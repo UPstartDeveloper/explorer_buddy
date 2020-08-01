@@ -15,18 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from django.contrib.staticfiles.urls import static
 from django.contrib.auth import views as auth_views
 from django.conf import settings
-# from django.conf.urls.static import static
+
+import explorer.views as views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Admin site
     path('notes/', include('notes.urls')),  # Notes app
-    path('api/', include('api.urls')),
-    path('auth/', include('django.contrib.auth.urls')),
-    path('', include('accounts.urls')),
+    path('api/', include('api.urls')),  # DRF plugin
+    path('auth/', include('django.contrib.auth.urls')),  # Built-in auth app
+    path('', views.show_landing_page),  # landing page
+    path('accounts/', include('accounts.urls')),  # User Accounts and User info
 ]
 
 # used to serve static files in development

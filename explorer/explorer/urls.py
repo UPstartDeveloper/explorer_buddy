@@ -26,7 +26,7 @@ urlpatterns = [
     path('notes/', include('notes.urls')),  # Notes app
     path('api/', include('api.urls')),  # DRF plugin
     path('auth/', include('django.contrib.auth.urls')),  # Built-in auth app
-    path('', views.show_landing_page),  # landing page
+    path('', views.show_landing_page, name="landing_page"),  # landing page
     path('accounts/', include('accounts.urls')),  # User Accounts and User info
 ]
 

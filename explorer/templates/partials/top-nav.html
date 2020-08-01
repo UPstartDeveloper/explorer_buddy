@@ -6,7 +6,11 @@
         <img class="img-circle" src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
         <!-- brand name -->
         <span class="brandmark text-white">
-            <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+            {% if user.is_authenticated %}
+                <a href="{% url 'notes:index' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+            {% else %}
+                <a href="{% url 'landing_page' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+            {% endif %}
                 <h3>Explorer Buddy</h3>
             </a>
         </span>

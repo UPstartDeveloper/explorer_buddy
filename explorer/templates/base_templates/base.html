@@ -36,12 +36,13 @@
                 {% else %}
                 <div class="nav-item navbar-brand d-flex w-50 mr-auto">
                     <img class="img-circle " src="{% static 'images/brandmark.png' %}" width="60" height="60" alt="">
-                    <!-- user sees their name if signed in -->
-                    <span class="brandmark text-white">Explorer<br>Buddy</span>
+                    <!-- user and go to landing page if not signed in -->
+                    <a href="{% url 'landing_page' %}" class="navbar-brand d-flex w-50 mr-auto text-white">
+                        <span class="brandmark text-white">Explorer<br>Buddy</span>
+                    </a>
                 </div>
                 {% endif %}
             </li>
-            <!--<br>-->
             <!-- is user is signed in, they can CRUD their notes, and log out -->
             {% if user.is_authenticated %}
                 <li class="nav-item">

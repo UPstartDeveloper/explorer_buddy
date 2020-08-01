@@ -4,8 +4,8 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    Left: 0;
-    overflow-x: hidden;
+    left: 0;
+    overflow-x: :hidden;
     padding-top: 20px;
 }
 
@@ -51,10 +51,7 @@ ul, ol, li {
     padding: 0px 0px 5px 10px;
 }
 
-/* Credit for these CSS properties goes to: https://stackoverflow.com/questions/11555931/make-footer-stick-to-bottom-of-page-using-twitter-bootstrap */
-.footer {
-  bottom: -50px;
-  position: absolute;
-  right: 0px;
-  left: 0px;
+#footer {
+    margin-bottom: auto;
+    margin-top: auto;
 }

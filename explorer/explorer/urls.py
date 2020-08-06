@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 
-from explorer import views
+from notes import views
 
 
 urlpatterns = [

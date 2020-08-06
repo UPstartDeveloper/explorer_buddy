@@ -1,0 +1,57 @@
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: :hidden;
+    padding-top: 20px;
+}
+
+.sidenav .note-links {
+    padding: 6px 8px 6px 6px;
+    text-decoration: none;
+    display: block;
+    font-size: 25px;
+}
+
+.sidenav .nav-item {
+    padding-left: 16px;
+}
+
+.sidenav .brandmark {
+    font-size: 20px;
+    padding: 0px 0px 5px 10px;
+}
+
+.top-nav .brandmark {
+    padding: 0px 0px 5px 0px;
+}
+
+.container {
+    margin-left: 200px;
+    padding-left: 10px;
+    position: relative;
+}
+
+ul, ol, li {
+    list-style-type: none;
+}
+
+.img-circle {
+      border-radius: 15px;
+}
+
+#top-nav {
+    background-color: #343a40 !important;
+}
+
+#top-nav .brandmark {
+    padding: 0px 0px 5px 10px;
+}
+
+#footer {
+    margin-bottom: auto;
+    margin-top: auto;
+}

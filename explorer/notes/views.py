@@ -160,6 +160,11 @@ class NoteDelete(DeleteView):
         return (self.request.user == note.author)
 
 
+def show_landing_page(request):
+    '''Return a HttpResponse of the landing page.'''
+    return render(request, "landing.html")
+
+
 def post_on_medium(self, request, *args, **kwargs):
     """Integrates with the Medium API, to allow users to post their Note
        content on their Medium account.

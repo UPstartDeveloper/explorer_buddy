@@ -1,0 +1,69 @@
+{% extends "base_for_index.html" %}
+{% load static %}
+
+<!-- Navbar along the top -->
+{% block navbar %}
+    {% include "partials/top-nav.html" %}
+{% endblock %}
+
+<!-- Page Content -->
+{% block content %}
+    <!-- HERO -->
+    <div class="jumbotron mb-0" style="background-image: url('{% static 'images/croatia_nature.jpg' %}'); background-position:center; height: 1000px;">
+        <h1 class="display-3 text-white">The World is Yours</h1>
+        <p class="lead text-white ml-3">And it's the best playground you've ever seen.</p>
+        <hr class="my-4">
+        <br>
+
+    <!-- FEATURES -->
+        <div class="container">
+            <div class="row">
+                <h2 class="text-white">Why Explorer Buddy?</h2>
+            </div>
+            <div class="row">
+                <!-- feature 1 -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/explorer-kid.jpg' %}" height=325px>
+                        <div class="card-body">
+                            <h4 class="card-title">Got Questions?</h4>
+                            <p class="card-text">Use your notes as a way to track your findings as you explore nature.
+                                                Make your learning fun!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- feature 2 -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/frog.jpg' %}" height=255px>
+                        <div class="card-body">
+                            <h4 class="card-title">Got Images?</h4>
+                            <p class="card-text">Upload your pictures and make your notes really pop!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- feature 3 -->
+                <div class="col-md-4">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                        <img class="card-img-top" src="{% static 'images/paper.jpg' %}" height=255px>
+                        <div class="card-body">
+                            <h4 class="card-title">Hate Paper?</h4>
+                            <p class="card-text">Never lose any notes ever again. We'll keep all your discoveries safe here on the Web!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Call to Action: Sign Up -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="text-center mb-0">
+                <a href="{% url 'accounts:signup-form' %}" class="btn btn-lg bg-success text-white ml-2">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+        
+{% endblock %}
